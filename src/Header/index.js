@@ -27,7 +27,7 @@ export default () => {
             <Menu />
             <Logo src={logo} alt="logo" />
           </Col>
-          <Col xs={7} md={5}>
+          <Col xs={10} sm={7} md={5}>
             <SearchForm />
           </Col>
           <Col mdOffset={2} sm={0} md={4}>

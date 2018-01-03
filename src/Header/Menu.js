@@ -16,6 +16,9 @@ const Menu = styled.button`
 
 const Arrow = styled.img`
   margin-left: 6px;
+  @media (max-width: 320px) {
+    margin-left: 4px;
+  }
 `;
 
 export default () => {
