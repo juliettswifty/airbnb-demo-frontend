@@ -30,7 +30,7 @@ export default () => {
     <Container>
       <Grid>
         <Row start="xs">
-          <Col xs={12}>
+          <Col sm={12}>
             <Title>Explore Airbnb</Title>
           </Col>
         </Row>
