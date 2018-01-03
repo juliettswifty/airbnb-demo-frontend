@@ -28,7 +28,7 @@ const Picture = styled.img`
 
 export default () => {
   return (
-    <Col md={4}>
+    <Col xs={5} md={4}>
       <Container>
         <Picture src={pic} srcSet={pic2x} alt="img explore" />
         <Text>Experiences</Text>

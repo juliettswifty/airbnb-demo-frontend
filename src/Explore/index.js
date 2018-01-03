@@ -15,6 +15,16 @@ const Title = styled.h2`
   color: #383838;
 `;
 
+const HorizontalScroll = styled.div`
+  display: flex;
+  @media (max-width: 768px) {
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
+    width: auto;
+  }
+`;
+
 export default () => {
   return (
     <Container>
@@ -24,11 +34,12 @@ export default () => {
             <Title>Explore Airbnb</Title>
           </Col>
         </Row>
-        <Row>
+
+        <HorizontalScroll>
           <Homes />
           <Experiences />
           <Restaurants />
-        </Row>
+        </HorizontalScroll>
       </Grid>
     </Container>
   );
