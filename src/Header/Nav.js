@@ -5,12 +5,15 @@ const Nav = styled.nav`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  @media (max-width: 768px) {
+    display: none;
+  }
 `;
 
 const Link = styled.a`
   text-decoration: none;
   line-height: 24px;
-  font-size: 14px;
+  font-size: 0.875rem;
   color: #383838;
   margin-left: 8px;
 `;
