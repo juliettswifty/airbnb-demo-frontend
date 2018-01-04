@@ -45,6 +45,9 @@ const BtnNext = styled.button`
   box-sizing: border-box;
   box-shadow: 0px 2px 4px rgba(72, 72, 72, 0.16);
   border-radius: 20px;
+  @media (max-width: 768px) {
+    display: none;
+  }
 `;
 
 export default () => {

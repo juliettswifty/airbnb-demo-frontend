@@ -8,6 +8,9 @@ import star from "./star.svg";
 const Card = styled.div`
   display: flex;
   flex-direction: column;
+  @media (max-width: 768px) {
+    display: none;
+  }
 `;
 
 const Image = styled.img`
