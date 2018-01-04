@@ -13,25 +13,39 @@ const Container = styled.div`
   box-sizing: border-box;
   box-shadow: 0px 2px 4px rgba(72, 72, 72, 0.08);
   border-radius: 4px;
-  @media (max-width: 400px) {
+  @media (max-width: 575px) {
     flex-direction: column;
+    align-items: flex-start;
   }
 `;
 
 const Text = styled.p`
+  font-family: "CircularBold", san-serif;
   color: #383838;
   font-size: 1.0625rem;
   margin-left: 24px;
-  @media (max-width: 400px) {
-    margin-left: 0;
+  @media (max-width: 575px) {
+    margin-left: 12px;
   }
 `;
 
 const Picture = styled.img`
   width: 96px;
   height: 72px;
-  @media (max-width: 400px) {
-    width: 100%;
+  margin-top: -1px;
+  margin-bottom: -1px;
+  margin-left: -1px;
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+  @media (max-width: 575px) {
+    width: 101%;
+    height: 101%;
+    margin-right: -1px;
+    margin-bottom: -1px;
+    margin-left: -1px;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    border-bottom-left-radius: 0;
   }
 `;
 

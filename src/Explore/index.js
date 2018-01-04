@@ -5,14 +5,11 @@ import Homes from "./Homes";
 import Experiences from "./Experiences";
 import Restaurants from "./Restaurants";
 
-const Container = styled.div`
-  padding: 24px 0;
-`;
-
 const Title = styled.h2`
   font-size: 2.125rem;
   line-height: 34px;
   color: #383838;
+  font-family: "CircularBold", san-serif;
 `;
 
 const HorizontalScroll = styled.div`
@@ -27,20 +24,18 @@ const HorizontalScroll = styled.div`
 
 export default () => {
   return (
-    <Container>
-      <Grid>
-        <Row start="xs">
-          <Col sm={12}>
-            <Title>Explore Airbnb</Title>
-          </Col>
-        </Row>
+    <Grid>
+      <Row start="xs">
+        <Col xs={12}>
+          <Title>Explore Airbnb</Title>
+        </Col>
+      </Row>
 
-        <HorizontalScroll>
-          <Homes />
-          <Experiences />
-          <Restaurants />
-        </HorizontalScroll>
-      </Grid>
-    </Container>
+      <HorizontalScroll>
+        <Homes />
+        <Experiences />
+        <Restaurants />
+      </HorizontalScroll>
+    </Grid>
   );
 };

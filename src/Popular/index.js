@@ -13,6 +13,7 @@ const Title = styled.h2`
   line-height: 34px;
   color: #383838;
   text-align: left;
+  font-family: "CircularBold", san-serif;
 `;
 
 const Container = styled.div`
@@ -40,7 +41,6 @@ const BtnNext = styled.button`
   justify-content: center;
   width: 40px;
   height: 40px;
-  background: #ffffff;
   border: 0.5px solid rgba(72, 72, 72, 0.2);
   box-sizing: border-box;
   box-shadow: 0px 2px 4px rgba(72, 72, 72, 0.16);
@@ -65,8 +65,8 @@ export default () => {
     <div>
       <Grid>
         <Row end="xs" middle="xs">
-          <Col xs>
-            <Title>Popular</Title>
+          <Col xs={10}>
+            <Title>Popular reservations around the world</Title>
           </Col>
           <Col xs>
             <BtnAll>

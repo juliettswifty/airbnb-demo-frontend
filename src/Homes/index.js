@@ -8,6 +8,7 @@ import Card2 from "./Card2";
 import Card3 from "./Card3";
 
 const Title = styled.h2`
+  font-family: "CircularBold", san-serif;
   font-size: 2.125rem;
   line-height: 34px;
   color: #383838;

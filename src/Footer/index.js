@@ -8,7 +8,7 @@ import twitter from "./twitter.svg";
 import instagram from "./instagram.svg";
 
 const Footer = styled.footer`
-  padding: 48px 0;
+  padding: 48px 0 24px;
   box-shadow: 0px -0.5px 0px rgba(72, 72, 72, 0.3);
 `;
 const Select = styled.select`
@@ -23,7 +23,7 @@ const Select = styled.select`
   -webkit-appearance: none;
   font-family: "CircularLight", san-serif;
   &:last-of-type {
-    margin-top: 16px;
+    margin-bottom: 16px;
   }
 `;
 
@@ -55,8 +55,16 @@ const TextContainer = styled.div`
   }
 `;
 
-const Container = styled.div`
+const ContainerLeft = styled.div`
   display: flex;
+  justify-content: flex-start;
+`;
+const ContainerRight = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  @media (max-width: 768px) {
+    justify-content: flex-start;
+  }
 `;
 
 const Link = styled.a`
@@ -76,7 +84,7 @@ const Divider = styled.div`
   background: #484848;
   height: 1px;
   width: 100%;
-  margin: 48px 0 34px;
+  margin: 48px 0 24px;
 `;
 
 export default () => {
@@ -84,15 +92,21 @@ export default () => {
     <Footer>
       <Grid>
         <Row>
-          <Col xs={12} md={3}>
-            <Select>
-              <option>English</option>
-              <option>French</option>
-            </Select>
-            <Select>
-              <option>United States dollar</option>
-              <option>French</option>
-            </Select>
+          <Col xs={12} md={3} lg={3}>
+            <Row>
+              <Col xs={6} md={12}>
+                <Select>
+                  <option>English</option>
+                  <option>French</option>
+                </Select>
+              </Col>
+              <Col xs={6} md={12}>
+                <Select>
+                  <option>United States dollar</option>
+                  <option>French</option>
+                </Select>
+              </Col>
+            </Row>
           </Col>
 
           <Col xsOffset={1} md={2}>
@@ -134,15 +148,15 @@ export default () => {
             <Divider />
           </Col>
         </Row>
-        <Row start="xs" middle="xs">
-          <Col md={2}>
-            <Container>
+        <Row middle="xs">
+          <Col sm={5} md={3} lg={2}>
+            <ContainerLeft>
               <img src={logo} alt="logo" />
               <TextLogo>© Airbnb Inc.</TextLogo>
-            </Container>
+            </ContainerLeft>
           </Col>
-          <Col xs={12} sm={12} md={6} lg={5} mdOffset={4} lgOffset={5}>
-            <Container>
+          <Col xs={12} sm={12} md={6} lg={5} mdOffset={3} lgOffset={5}>
+            <ContainerRight>
               <Link href="#">Terms</Link>
               <Link href="#">Privacy</Link>
               <Link href="#">Site map</Link>
@@ -155,7 +169,7 @@ export default () => {
               <LogoLink href="#">
                 <img src={instagram} alt="instagram" />
               </LogoLink>
-            </Container>
+            </ContainerRight>
           </Col>
         </Row>
       </Grid>
