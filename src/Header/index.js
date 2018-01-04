@@ -30,7 +30,7 @@ export default () => {
           <Col xs={10} sm={7} md={5}>
             <SearchForm />
           </Col>
-          <Col mdOffset={2} sm={0} md={4}>
+          <Col mdOffset={1} lgOffset={2} sm={0} md={5} lg={4}>
             <Nav />
           </Col>
         </Row>

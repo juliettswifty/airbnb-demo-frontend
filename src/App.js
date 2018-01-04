@@ -6,6 +6,7 @@ import Experiences from "./Experiences";
 import Homes from "./Homes";
 import Popular from "./Popular";
 import Featured from "./Featured";
+import Footer from "./Footer";
 
 class App extends Component {
   render() {
@@ -17,6 +18,7 @@ class App extends Component {
         <Homes />
         <Popular />
         <Featured />
+        <Footer />
       </div>
     );
   }
