@@ -4,20 +4,20 @@ import logo from "./ic-airbnb.svg";
 import arrow from "./Shape.svg";
 
 const Menu = styled.button`
-  display: none;
-  @media (max-width: 768px) {
-    display: flex;
-    align-items: center;
-    background: none;
-    border: none;
-    width: 100%;
+  display: flex;
+  align-items: center;
+  background: none;
+  border: none;
+  width: 100%;
+  @media (min-width: 768px) {
+    display: none;
   }
 `;
 
 const Arrow = styled.img`
-  margin-left: 6px;
-  @media (max-width: 320px) {
-    margin-left: 4px;
+  margin-left: 4px;
+  @media (min-width: 320px) {
+    margin-left: 6px;
   }
 `;
 

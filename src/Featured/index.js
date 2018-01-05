@@ -28,12 +28,10 @@ const Container = styled.div`
 `;
 const HorizontalScroll = styled.div`
   display: flex;
-  @media (max-width: 768px) {
-    overflow-x: scroll;
-    overflow-y: hidden;
-    white-space: nowrap;
-    width: auto;
-  }
+  overflow-x: hidden;
+  overflow-y: hidden;
+  white-space: nowrap;
+  width: auto;
 `;
 const Image = styled.img`
   width: 100%;
@@ -53,20 +51,20 @@ const Text = styled.p`
 `;
 
 const BtnNext = styled.button`
-  position: absolute;
-  top: 40%;
-  right: -20px;
-  display: flex;
-  justify-content: center;
-  width: 40px;
-  height: 40px;
-  background: #ffffff;
-  border: 0.5px solid rgba(72, 72, 72, 0.2);
-  box-sizing: border-box;
-  box-shadow: 0px 2px 4px rgba(72, 72, 72, 0.16);
-  border-radius: 20px;
-  @media (max-width: 768px) {
-    display: none;
+  display: none;
+  @media (min-width: 768px) {
+    position: absolute;
+    top: 40%;
+    right: -20px;
+    display: flex;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: #ffffff;
+    border: 0.5px solid rgba(72, 72, 72, 0.2);
+    box-sizing: border-box;
+    box-shadow: 0px 2px 4px rgba(72, 72, 72, 0.16);
+    border-radius: 20px;
   }
 `;
 export default () => {

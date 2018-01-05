@@ -13,8 +13,9 @@ const Header = styled.header`
 `;
 
 const Logo = styled.img`
-  @media (max-width: 768px) {
-    display: none;
+  display: none;
+  @media (min-width: 769px) {
+    display: block;
   }
 `;
 

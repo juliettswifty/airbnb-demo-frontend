@@ -34,13 +34,7 @@ const Title = styled.p`
   font-size: 0.9375rem;
   color: ##383838;
 `;
-const LinkSubfooter = styled.a`
-  text-align: left;
-  margin: 4px 0;
-  font-size: 0.9375rem;
-  color: #636363;
-  text-decoration: none;
-`;
+
 const TextLogo = styled.p`
   font-size: 0.9375rem;
   color: #636363;
@@ -48,10 +42,10 @@ const TextLogo = styled.p`
 `;
 
 const TextContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  @media (max-width: 767px) {
-    display: none;
+  display: none;
+  @media (min-width: 767px) {
+    display: flex;
+    flex-direction: column;
   }
 `;
 
@@ -61,12 +55,19 @@ const ContainerLeft = styled.div`
 `;
 const ContainerRight = styled.div`
   display: flex;
-  justify-content: flex-end;
-  @media (max-width: 768px) {
-    justify-content: flex-start;
+  justify-content: flex-start;
+
+  @media (min-width: 768px) {
+    justify-content: flex-end;
   }
 `;
-
+const ColumnLink = styled.a`
+  text-align: left;
+  margin: 4px 0;
+  font-size: 0.9375rem;
+  color: #636363;
+  text-decoration: none;
+`;
 const Link = styled.a`
   color: #636363;
   font-size: 0.9375rem;
@@ -112,33 +113,33 @@ export default () => {
           <Col xsOffset={1} md={2}>
             <TextContainer>
               <Title>Airbnb</Title>
-              <LinkSubfooter href="#">About us</LinkSubfooter>
-              <LinkSubfooter href="#">Careers</LinkSubfooter>
-              <LinkSubfooter href="#">Press</LinkSubfooter>
-              <LinkSubfooter href="#">Policies</LinkSubfooter>
-              <LinkSubfooter href="#">Help</LinkSubfooter>
-              <LinkSubfooter href="#">Diversity & Belonging</LinkSubfooter>
+              <ColumnLink href="#">About us</ColumnLink>
+              <ColumnLink href="#">Careers</ColumnLink>
+              <ColumnLink href="#">Press</ColumnLink>
+              <ColumnLink href="#">Policies</ColumnLink>
+              <ColumnLink href="#">Help</ColumnLink>
+              <ColumnLink href="#">Diversity & Belonging</ColumnLink>
             </TextContainer>
           </Col>
           <Col xsOffset={1} md={2}>
             <TextContainer>
               <Title>Discover</Title>
-              <LinkSubfooter href="#">Trust & Safety</LinkSubfooter>
-              <LinkSubfooter href="#">Travel Credit</LinkSubfooter>
-              <LinkSubfooter href="#">Gift Cards</LinkSubfooter>
-              <LinkSubfooter href="#">Airbnb Citizen</LinkSubfooter>
-              <LinkSubfooter href="#">Business Travel</LinkSubfooter>
-              <LinkSubfooter href="#">Guidebooks</LinkSubfooter>
-              <LinkSubfooter href="#">Airbnbmag</LinkSubfooter>
+              <ColumnLink href="#">Trust & Safety</ColumnLink>
+              <ColumnLink href="#">Travel Credit</ColumnLink>
+              <ColumnLink href="#">Gift Cards</ColumnLink>
+              <ColumnLink href="#">Airbnb Citizen</ColumnLink>
+              <ColumnLink href="#">Business Travel</ColumnLink>
+              <ColumnLink href="#">Guidebooks</ColumnLink>
+              <ColumnLink href="#">Airbnbmag</ColumnLink>
             </TextContainer>
           </Col>
           <Col xsOffset={1} md={2}>
             <TextContainer>
               <Title>Hosting</Title>
-              <LinkSubfooter href="#">Why Host</LinkSubfooter>
-              <LinkSubfooter href="#">Hospitality</LinkSubfooter>
-              <LinkSubfooter href="#">Responsible Hosting</LinkSubfooter>
-              <LinkSubfooter href="#">Community Center</LinkSubfooter>
+              <ColumnLink href="#">Why Host</ColumnLink>
+              <ColumnLink href="#">Hospitality</ColumnLink>
+              <ColumnLink href="#">Responsible Hosting</ColumnLink>
+              <ColumnLink href="#">Community Center</ColumnLink>
             </TextContainer>
           </Col>
         </Row>

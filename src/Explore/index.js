@@ -13,13 +13,11 @@ const Title = styled.h2`
 `;
 
 const HorizontalScroll = styled.div`
+  overflow-x: hidden;
+  overflow-y: hidden;
+  white-space: nowrap;
+  width: auto;
   display: flex;
-  @media (max-width: 768px) {
-    overflow-x: scroll;
-    overflow-y: hidden;
-    white-space: nowrap;
-    width: auto;
-  }
 `;
 
 export default () => {

@@ -6,10 +6,10 @@ import { Grid, Row, Col } from "react-flexbox-grid";
 import star from "./star.svg";
 
 const Card = styled.div`
-  display: flex;
-  flex-direction: column;
-  @media (max-width: 575px) {
-    display: none;
+  display: none;
+  @media (min-width: 575px) {
+    display: flex;
+    flex-direction: column;
   }
 `;
 
