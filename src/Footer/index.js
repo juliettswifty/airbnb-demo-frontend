@@ -25,6 +25,10 @@ const Select = styled.select`
   &:last-of-type {
     margin-bottom: 16px;
   }
+  &:focus {
+    outline: none;
+    border: 1px solid #008489;
+  }
 `;
 
 const Title = styled.p`
@@ -67,6 +71,9 @@ const ColumnLink = styled.a`
   font-size: 0.9375rem;
   color: #636363;
   text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+  }
 `;
 const Link = styled.a`
   color: #636363;
@@ -74,6 +81,9 @@ const Link = styled.a`
   text-decoration: none;
   margin-right: 16px;
   text-align: right;
+  &:hover {
+    text-decoration: underline;
+  }
 `;
 const LogoLink = styled.a`
   margin-left: 20px;
