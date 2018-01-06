@@ -6,7 +6,7 @@ import Card from "./Card";
 import Card2 from "./Card2";
 import Card3 from "./Card3";
 import Card4 from "./Card4";
-import next from "./next.svg";
+import BtnNext from "../BtnNext";
 
 const Title = styled.h2`
   font-size: 2.125rem;
@@ -33,24 +33,6 @@ const Container = styled.div`
   position: relative;
 `;
 
-const BtnNext = styled.button`
-  display: none;
-  @media (min-width: 768px) {
-    position: absolute;
-    top: 40%;
-    right: -20px;
-    display: flex;
-    justify-content: center;
-    width: 40px;
-    height: 40px;
-    background: #ffffff;
-    border: 0.5px solid rgba(72, 72, 72, 0.2);
-    box-sizing: border-box;
-    box-shadow: 0px 2px 4px rgba(72, 72, 72, 0.16);
-    border-radius: 20px;
-  }
-`;
-
 export default () => {
   return (
     <div>
@@ -71,9 +53,7 @@ export default () => {
             <Card2 />
             <Card3 />
             <Card4 />
-            <BtnNext>
-              <img src={next} alt="arrow" />
-            </BtnNext>
+            <BtnNext />
           </Row>
         </Container>
       </Grid>

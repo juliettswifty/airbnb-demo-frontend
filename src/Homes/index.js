@@ -2,10 +2,11 @@ import React from "react";
 import styled from "styled-components";
 import { Grid, Row, Col } from "react-flexbox-grid";
 import arrow from "./Shape.svg";
-import next from "./next.svg";
 import Card from "./Card";
 import Card2 from "./Card2";
 import Card3 from "./Card3";
+import BtnNext from "../BtnNext";
+import HorizontalScroll from "../HorizontalScroll";
 
 const Title = styled.h2`
   font-family: "CircularBold", san-serif;
@@ -32,32 +33,6 @@ const Arrow = styled.img`
   margin-bottom: 2px;
 `;
 
-const BtnNext = styled.button`
-  display: none;
-  @media (min-width: 768px) {
-    position: absolute;
-    top: 35%;
-    right: -20px;
-    display: flex;
-    justify-content: center;
-    width: 40px;
-    height: 40px;
-    background: #ffffff;
-    border: 0.5px solid rgba(72, 72, 72, 0.2);
-    box-sizing: border-box;
-    box-shadow: 0px 2px 4px rgba(72, 72, 72, 0.16);
-    border-radius: 20px;
-  }
-`;
-
-const HorizontalScroll = styled.div`
-  overflow-x: hidden;
-  overflow-y: hidden;
-  white-space: nowrap;
-  width: auto;
-  display: flex;
-`;
-
 export default () => {
   return (
     <div>
@@ -78,9 +53,7 @@ export default () => {
               <Card />
               <Card2 />
               <Card3 />
-              <BtnNext>
-                <img src={next} alt="arrow" />
-              </BtnNext>
+              <BtnNext />
             </HorizontalScroll>
           </Row>
         </Container>

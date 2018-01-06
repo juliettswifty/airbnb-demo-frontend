@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 import { Grid, Row, Col } from "react-flexbox-grid";
-import next from "./next.svg";
 import image from "./Rectangle.png";
 import image2x from "./Rectangle@2x.png";
 import image2 from "./Rectangle2.png";
@@ -14,6 +13,8 @@ import image5 from "./Rectangle5.png";
 import image52x from "./Rectangle5@2x.png";
 import image6 from "./Rectangle6.png";
 import image62x from "./Rectangle6@2x.png";
+import BtnNext from "../BtnNext";
+import HorizontalScroll from "../HorizontalScroll";
 
 const Title = styled.h2`
   font-size: 2.125rem;
@@ -22,17 +23,12 @@ const Title = styled.h2`
   text-align: left;
   font-family: "CircularBold", san-serif;
 `;
+
 const Container = styled.div`
   position: relative;
   margin-bottom: 48px;
 `;
-const HorizontalScroll = styled.div`
-  display: flex;
-  overflow-x: hidden;
-  overflow-y: hidden;
-  white-space: nowrap;
-  width: auto;
-`;
+
 const Image = styled.img`
   width: 100%;
   height: 100%;
@@ -50,23 +46,6 @@ const Text = styled.p`
   font-family: "CircularBold", san-serif;
 `;
 
-const BtnNext = styled.button`
-  display: none;
-  @media (min-width: 768px) {
-    position: absolute;
-    top: 40%;
-    right: -20px;
-    display: flex;
-    justify-content: center;
-    width: 40px;
-    height: 40px;
-    background: #ffffff;
-    border: 0.5px solid rgba(72, 72, 72, 0.2);
-    box-sizing: border-box;
-    box-shadow: 0px 2px 4px rgba(72, 72, 72, 0.16);
-    border-radius: 20px;
-  }
-`;
 export default () => {
   return (
     <div>
@@ -135,9 +114,7 @@ export default () => {
                   <Text>Los Angeles</Text>
                 </Card>
               </Col>
-              <BtnNext>
-                <img src={next} alt="arrow" />
-              </BtnNext>
+              <BtnNext />
             </HorizontalScroll>
           </Row>
         </Container>

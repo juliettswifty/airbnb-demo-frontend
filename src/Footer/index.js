@@ -26,7 +26,6 @@ const Select = styled.select`
     margin-bottom: 16px;
   }
   &:focus {
-    outline: none;
     border: 1px solid #008489;
   }
 `;
@@ -47,7 +46,7 @@ const TextLogo = styled.p`
 
 const TextContainer = styled.div`
   display: none;
-  @media (min-width: 767px) {
+  @media (min-width: 768px) {
     display: flex;
     flex-direction: column;
   }
