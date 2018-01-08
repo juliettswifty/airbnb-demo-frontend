@@ -1,8 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 import { Grid, Row, Col } from "react-flexbox-grid";
-import image from "./Rectangle.png";
-import image2x from "./Rectangle@2x.png";
 import star from "./star.svg";
 
 const Card = styled.div`
@@ -48,17 +46,21 @@ const Star = styled.img`
     margin-right: 8px;
   }
 `;
-export default () => {
+export default props => {
   return (
     <Col xs={6} sm={5} md={4}>
       <Card>
-        <Image src={image} srcSet={image2x} alt="image experiense" />
+        <Image
+          src={props.picSrc}
+          srcSet={props.picSrc2x}
+          alt="image experiense"
+        />
         <Row start="xs" top="xs">
           <Col xs>
             <TextContainer>
               <Name>
-                <Price>$82</Price>
-                La Salentina, see, nature & relax
+                <Price>${props.price}</Price>
+                {props.title}
               </Name>
             </TextContainer>
           </Col>
@@ -66,7 +68,9 @@ export default () => {
         <Row start="xs">
           <Col xs>
             <TextContainer>
-              <Options>Entire house · 9 beds</Options>
+              <Options>
+                {props.rentType} · {props.bedsCount} beds
+              </Options>
             </TextContainer>
           </Col>
         </Row>
@@ -78,8 +82,9 @@ export default () => {
               <Star src={star} alt="star" />
               <Star src={star} alt="star" />
               <Star src={star} alt="star" />
-
-              <Owners>97 · Superhost</Owners>
+              <Owners>
+                {props.reviewsCount} · {props.houseGrade}
+              </Owners>
             </TextContainer>
           </Col>
         </Row>

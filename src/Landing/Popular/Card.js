@@ -1,8 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { Grid, Row, Col } from "react-flexbox-grid";
-import image from "./Rectangle3.png";
-import image2x from "./Rectangle3@2x.png";
+
 const Card = styled.div`
   display: flex;
   flex-direction: column;
@@ -36,29 +35,33 @@ const Place = styled.p`
   font-size: 0.625rem;
 `;
 
-export default () => {
+export default props => {
   return (
     <Col xs={6} sm={4} md={3}>
       <Card>
-        <Image src={image} srcSet={image2x} alt="image experiense" />
+        <Image
+          src={props.picSrc}
+          srcSet={props.picSrc2x}
+          alt="image experiense"
+        />
         <Row start="xs" top="xs">
           <Col xs>
             <TextContainer>
-              <Place>German american</Place>
+              <Place>{props.place}</Place>
             </TextContainer>
           </Col>
         </Row>
         <Row start="xs" top="xs">
           <Col xs>
             <TextContainer>
-              <Name>Prime Meats</Name>
+              <Name>{props.title}</Name>
             </TextContainer>
           </Col>
         </Row>
         <Row start="xs">
           <Col xs>
             <TextContainer>
-              <Price>About $55 per person</Price>
+              <Price>About ${props.price} per person</Price>
             </TextContainer>
           </Col>
         </Row>

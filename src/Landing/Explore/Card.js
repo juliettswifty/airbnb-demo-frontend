@@ -1,7 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import pic from "./Rectangle2.png";
-import pic2x from "./Rectangle2@2x.png";
 import { Grid, Row, Col } from "react-flexbox-grid";
 
 const Container = styled.div`
@@ -20,7 +18,7 @@ const Container = styled.div`
   }
 `;
 
-const Text = styled.p`
+const Text = styled.h3`
   font-family: "CircularBold", san-serif;
   color: #383838;
   font-size: 1.0625rem;
@@ -50,12 +48,12 @@ const Picture = styled.img`
   }
 `;
 
-export default () => {
+export default props => {
   return (
     <Col xs={6} sm={5} md={4}>
       <Container>
-        <Picture src={pic} srcSet={pic2x} alt="img explore" />
-        <Text>Homes</Text>
+        <Picture src={props.picSrc} srcSet={props.pic2xSrc} alt="img explore" />
+        <Text>{props.children}</Text>
       </Container>
     </Col>
   );

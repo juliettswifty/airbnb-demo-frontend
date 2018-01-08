@@ -1,16 +1,12 @@
-import image3 from "./Rectangle3.png";
-import image32x from "./Rectangle3@2x.png";
 import React from "react";
 import styled from "styled-components";
 import { Grid, Row, Col } from "react-flexbox-grid";
+
 import star from "./star.svg";
 
 const Card = styled.div`
-  display: none;
-  @media (min-width: 575px) {
-    display: flex;
-    flex-direction: column;
-  }
+  display: flex;
+  flex-direction: column;
 `;
 
 const Image = styled.img`
@@ -28,7 +24,7 @@ const Price = styled.p`
   font-family: "CircularBold", san-serif;
   display: inline-block;
 `;
-const Name = styled.p`
+const Title = styled.p`
   margin: 8px 0 7px;
   font-family: CircularLight, san-serif;
   font-size: 0.9375rem;
@@ -45,18 +41,22 @@ const Star = styled.img`
     margin-right: 8px;
   }
 `;
-export default () => {
+export default props => {
   return (
     <Col xs={6} sm={4} md={3}>
       <Card>
-        <Image src={image3} srcSet={image32x} alt="image experiense" />
+        <Image
+          src={props.picSrc}
+          srcSet={props.picSrc2x}
+          alt="image experiense"
+        />
         <Row start="xs" top="xs">
           <Col xs>
             <TextContainer>
-              <Name>
-                <Price>$69</Price>
-                Table Mountain Summit, Cable Car Down
-              </Name>
+              <Title>
+                <Price>${props.price} </Price>
+                {props.title}
+              </Title>
             </TextContainer>
           </Col>
         </Row>
@@ -68,8 +68,7 @@ export default () => {
               <Star src={star} alt="star" />
               <Star src={star} alt="star" />
               <Star src={star} alt="star" />
-
-              <Reviews>44 reviews</Reviews>
+              <Reviews>{props.reviewsCount} reviews</Reviews>
             </TextContainer>
           </Col>
         </Row>
