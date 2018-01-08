@@ -10,6 +10,7 @@ const Header = styled.header`
   padding: 16px 0;
   background: #ffffff;
   box-shadow: 0px 0.5px 0px rgba(72, 72, 72, 0.3);
+  margin-bottom: 48px;
 `;
 
 const Logo = styled.img`

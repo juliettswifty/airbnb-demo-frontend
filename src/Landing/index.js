@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import Header from "./Header";
 import Explore from "./Explore";
 import Experiences from "./Experiences";
 import Homes from "./Homes";
@@ -18,9 +17,6 @@ const Wrapper = styled.div`
 export default () => {
   return (
     <div>
-      <Wrapper>
-        <Header />
-      </Wrapper>
       <Wrapper>
         <Explore />
       </Wrapper>
