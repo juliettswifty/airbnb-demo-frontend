@@ -17,22 +17,58 @@ import image5 from "./Rectangle5.png";
 import image52x from "./Rectangle5@2x.png";
 import image6 from "./Rectangle6.png";
 import image62x from "./Rectangle6@2x.png";
+import location from "./location.svg";
 
 const Positioner = styled.div`
   margin-top: 160px;
 `;
 
 const MapContainer = styled.div`
-  width: 34%;
-  position: fixed;
-  top: 140px;
-  right: 0;
-  height: 100vh;
-  display: inline-block;
+  display: none;
+  @media (min-width: 768px) {
+    width: 34%;
+    position: fixed;
+    top: 140px;
+    right: 0;
+    height: 100vh;
+    display: inline-block;
+  }
 `;
 
 const CardContainer = styled.div`
   margin-bottom: 40px;
+`;
+
+const Text = styled.p`
+  font-size: 1rem;
+  color: #383838;
+  margin-bottom: 40px;
+  &:last-of-type {
+    color: #636363;
+    margin-bottom: 25px;
+  }
+`;
+
+const IconContainer = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  margin: 0 24px 24px 0;
+  @media (min-width: 768px) {
+    display: inline-block;
+  }
+`;
+
+const IconLocation = styled.button`
+  width: 40px;
+  height: 40px;
+  background: #ffffff;
+  border: 1px solid rgba(72, 72, 72, 0.16);
+  box-sizing: border-box;
+  box-shadow: 0px 2px 4px rgba(72, 72, 72, 0.16);
+  border-radius: 20px;
+  @media (min-width: 768px) {
+    display: none;
+  }
 `;
 
 export default () => {
@@ -41,10 +77,10 @@ export default () => {
       <Filter />
       <Grid>
         <Row>
-          <Col md={8}>
+          <Col xs={12} md={8}>
             <Positioner>
               <Row>
-                <Col md={6}>
+                <Col xs={12} sm={6}>
                   <CardContainer>
                     <Card
                       picSrc={image}
@@ -58,7 +94,7 @@ export default () => {
                     />
                   </CardContainer>
                 </Col>
-                <Col md={6}>
+                <Col xs={12} sm={6}>
                   <CardContainer>
                     <Card
                       picSrc={image2}
@@ -72,7 +108,7 @@ export default () => {
                     />
                   </CardContainer>
                 </Col>
-                <Col md={6}>
+                <Col xs={12} sm={6}>
                   <CardContainer>
                     <Card
                       picSrc={image3}
@@ -86,7 +122,7 @@ export default () => {
                     />
                   </CardContainer>
                 </Col>
-                <Col md={6}>
+                <Col xs={12} sm={6}>
                   <CardContainer>
                     <Card
                       picSrc={image4}
@@ -100,7 +136,7 @@ export default () => {
                     />
                   </CardContainer>
                 </Col>
-                <Col md={6}>
+                <Col xs={12} sm={6}>
                   <CardContainer>
                     <Card
                       picSrc={image5}
@@ -114,7 +150,7 @@ export default () => {
                     />
                   </CardContainer>
                 </Col>
-                <Col md={6}>
+                <Col xs={12} sm={6}>
                   <CardContainer>
                     <Card
                       picSrc={image6}
@@ -130,8 +166,24 @@ export default () => {
                 </Col>
               </Row>
               <Row>
-                <Col md={12}>
+                <Col xs={12}>
                   <Pagination />
+                  <Text>1 – 18 of 300+ Rentals</Text>
+                  <Row>
+                    <Col xs={12} sm={11}>
+                      <Text>
+                        Enter dates to see full pricing. Additional fees apply.
+                        Taxes may be added.
+                      </Text>
+                    </Col>
+                    <Col xs={12} sm={1}>
+                      <IconContainer>
+                        <IconLocation>
+                          <img src={location} alt="location" />
+                        </IconLocation>
+                      </IconContainer>
+                    </Col>
+                  </Row>
                 </Col>
               </Row>
             </Positioner>

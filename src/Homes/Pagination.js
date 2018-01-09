@@ -62,16 +62,6 @@ const BtnNextPage = styled.a`
   }
 `;
 
-const Text = styled.p`
-  font-size: 1rem;
-  color: #383838;
-  margin-bottom: 40px;
-  &:last-of-type {
-    color: #636363;
-    margin-bottom: 25px;
-  }
-`;
-
 export default () => {
   return (
     <Row center="xs">
@@ -86,11 +76,6 @@ export default () => {
             <img src={arrow} alt="arrow" />
           </BtnNextPage>
         </Pagination>
-        <Text>1 – 18 of 300+ Rentals</Text>
-        <Text>
-          Enter dates to see full pricing. Additional fees apply. Taxes may be
-          added.
-        </Text>
       </Col>
     </Row>
   );

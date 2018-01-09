@@ -9,6 +9,27 @@ const Button = styled.button`
   padding: 7px 16px;
   font-size: 0.875rem;
   margin: 12px 11px 12px 0;
+  &:hover {
+    background: #f2f2f2;
+    border-color: #f2f2f2;
+  }
+`;
+
+const ButtonHide = styled.button`
+  display: none;
+  &:hover {
+    background: #f2f2f2;
+    border-color: #f2f2f2;
+  }
+  @media (min-width: 768px) {
+    display: inline-block;
+    border: 1px solid rgba(72, 72, 72, 0.2);
+    box-sizing: border-box;
+    border-radius: 4px;
+    padding: 7px 16px;
+    font-size: 0.875rem;
+    margin: 12px 11px 12px 0;
+  }
 `;
 
 const Filter = styled.div`
@@ -25,12 +46,12 @@ export default () => {
     <Filter>
       <Grid>
         <Row start="xs">
-          <Col md={8}>
+          <Col xs={12} md={8}>
             <Button>Dates</Button>
             <Button>Guests</Button>
-            <Button>Room type</Button>
-            <Button>Price</Button>
-            <Button>Instant book</Button>
+            <ButtonHide>Room type</ButtonHide>
+            <ButtonHide>Price</ButtonHide>
+            <ButtonHide>Instant book</ButtonHide>
             <Button>More filters</Button>
           </Col>
         </Row>
