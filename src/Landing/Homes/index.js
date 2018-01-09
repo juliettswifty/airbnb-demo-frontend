@@ -47,36 +47,42 @@ export default () => {
         <Container>
           <Row>
             <HorizontalScroll>
-              <Card
-                picSrc={image}
-                picSrc2x={image2x}
-                price="82"
-                title="La Salentina, see, nature & relax"
-                rentType="Entire house"
-                bedsCount="9"
-                reviewsCount="97"
-                houseGrade="Superhost"
-              />
-              <Card
-                picSrc={image2}
-                picSrc2x={image22x}
-                price="82"
-                title="Your private 3 bedr. riad and exclusi…"
-                rentType="Entire house"
-                bedsCount="5"
-                reviewsCount="161"
-                houseGrade="Superhost"
-              />
-              <Card
-                picSrc={image3}
-                picSrc2x={image32x}
-                price="200"
-                title="Dreamy Tropical Tree House"
-                rentType="Entire house"
-                bedsCount="1"
-                reviewsCount="364"
-                houseGrade="Superhost"
-              />
+              <Col xs={6} sm={5} md={4}>
+                <Card
+                  picSrc={image}
+                  picSrc2x={image2x}
+                  price="82"
+                  title="La Salentina, see, nature & relax"
+                  rentType="Entire house"
+                  bedsCount="9"
+                  reviewsCount="97"
+                  houseGrade="Superhost"
+                />
+              </Col>
+              <Col xs={6} sm={5} md={4}>
+                <Card
+                  picSrc={image2}
+                  picSrc2x={image22x}
+                  price="82"
+                  title="Your private 3 bedr. riad and exclusi…"
+                  rentType="Entire house"
+                  bedsCount="5"
+                  reviewsCount="161"
+                  houseGrade="Superhost"
+                />
+              </Col>
+              <Col xs={6} sm={5} md={4}>
+                <Card
+                  picSrc={image3}
+                  picSrc2x={image32x}
+                  price="200"
+                  title="Dreamy Tropical Tree House"
+                  rentType="Entire house"
+                  bedsCount="1"
+                  reviewsCount="364"
+                  houseGrade="Superhost"
+                />
+              </Col>
               <BtnNext />
             </HorizontalScroll>
           </Row>

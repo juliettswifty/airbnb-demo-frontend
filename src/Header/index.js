@@ -8,9 +8,13 @@ import Menu from "./Menu";
 
 const Header = styled.header`
   padding: 16px 0;
-  background: #ffffff;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1;
+  background: #fff;
   box-shadow: 0px 0.5px 0px rgba(72, 72, 72, 0.3);
-  margin-bottom: 48px;
 `;
 
 const Logo = styled.img`

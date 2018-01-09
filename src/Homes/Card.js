@@ -48,47 +48,45 @@ const Star = styled.img`
 `;
 export default props => {
   return (
-    <Col xs={6} sm={5} md={4}>
-      <Card>
-        <Image
-          src={props.picSrc}
-          srcSet={props.picSrc2x}
-          alt="image experiense"
-        />
-        <Row start="xs" top="xs">
-          <Col xs>
-            <TextContainer>
-              <Name>
-                <Price>${props.price}</Price>
-                {props.title}
-              </Name>
-            </TextContainer>
-          </Col>
-        </Row>
-        <Row start="xs">
-          <Col xs>
-            <TextContainer>
-              <Options>
-                {props.rentType} · {props.bedsCount} beds
-              </Options>
-            </TextContainer>
-          </Col>
-        </Row>
-        <Row start="xs">
-          <Col xs>
-            <TextContainer>
-              <Star src={star} alt="star" />
-              <Star src={star} alt="star" />
-              <Star src={star} alt="star" />
-              <Star src={star} alt="star" />
-              <Star src={star} alt="star" />
-              <Owners>
-                {props.reviewsCount} · {props.houseGrade}
-              </Owners>
-            </TextContainer>
-          </Col>
-        </Row>
-      </Card>
-    </Col>
+    <Card>
+      <Image
+        src={props.picSrc}
+        srcSet={props.picSrc2x}
+        alt="image experiense"
+      />
+      <Row start="xs" top="xs">
+        <Col xs>
+          <TextContainer>
+            <Name>
+              <Price>${props.price}</Price>
+              {props.title}
+            </Name>
+          </TextContainer>
+        </Col>
+      </Row>
+      <Row start="xs">
+        <Col xs>
+          <TextContainer>
+            <Options>
+              {props.rentType} · {props.bedsCount} beds
+            </Options>
+          </TextContainer>
+        </Col>
+      </Row>
+      <Row start="xs">
+        <Col xs>
+          <TextContainer>
+            <Star src={star} alt="star" />
+            <Star src={star} alt="star" />
+            <Star src={star} alt="star" />
+            <Star src={star} alt="star" />
+            <Star src={star} alt="star" />
+            <Owners>
+              {props.reviewsCount} · {props.houseGrade}
+            </Owners>
+          </TextContainer>
+        </Col>
+      </Row>
+    </Card>
   );
 };
