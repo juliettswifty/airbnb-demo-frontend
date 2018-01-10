@@ -1,8 +1,11 @@
 import React from "react";
 import styled from "styled-components";
 import { Grid, Row, Col } from "react-flexbox-grid";
+import { Link } from "react-router-dom";
+import Dropdown from "./Dropdown";
 
 const Button = styled.button`
+  display: inline-block;
   border: 1px solid rgba(72, 72, 72, 0.2);
   box-sizing: border-box;
   border-radius: 4px;
@@ -12,6 +15,11 @@ const Button = styled.button`
   &:hover {
     background: #f2f2f2;
     border-color: #f2f2f2;
+  }
+  &:focus {
+    background: #008489;
+    color: #ffffff;
+    border-color: #008489;
   }
 `;
 
@@ -47,7 +55,7 @@ export default () => {
       <Grid>
         <Row start="xs">
           <Col xs={12} md={8}>
-            <Button>Dates</Button>
+            <Dropdown />
             <Button>Guests</Button>
             <ButtonHide>Room type</ButtonHide>
             <ButtonHide>Price</ButtonHide>

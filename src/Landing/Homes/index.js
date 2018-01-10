@@ -12,16 +12,18 @@ import image2 from "../../Homes/Rectangle2.png";
 import image22x from "../../Homes/Rectangle2@2x.png";
 import image3 from "../../Homes/Rectangle3.png";
 import image32x from "../../Homes/Rectangle3@2x.png";
+import { Link } from "react-router-dom";
 
 const Container = styled.div`
   position: relative;
 `;
 
-const BtnAll = styled.button`
+const BtnAll = styled.p`
   background: none;
   border: none;
   color: #383838;
   line-height: 24px;
+  text-decoration: none;
   font-size: 0.875rem;
 `;
 
@@ -39,9 +41,11 @@ export default () => {
             <Title>Homes</Title>
           </Col>
           <Col xs>
-            <BtnAll>
-              See all <Arrow src={arrow} alt="Arrow" />
-            </BtnAll>
+            <Link to="/homes">
+              <BtnAll>
+                See all <Arrow src={arrow} alt="Arrow" />
+              </BtnAll>
+            </Link>
           </Col>
         </Row>
         <Container>

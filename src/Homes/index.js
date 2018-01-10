@@ -170,13 +170,13 @@ export default () => {
                   <Pagination />
                   <Text>1 – 18 of 300+ Rentals</Text>
                   <Row>
-                    <Col xs={12} sm={11}>
+                    <Col xs={12} sm={10} md={12}>
                       <Text>
                         Enter dates to see full pricing. Additional fees apply.
                         Taxes may be added.
                       </Text>
                     </Col>
-                    <Col xs={12} sm={1}>
+                    <Col xs={12} sm={2}>
                       <IconContainer>
                         <IconLocation>
                           <img src={location} alt="location" />
