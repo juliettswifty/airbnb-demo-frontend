@@ -18,6 +18,10 @@ const Container = styled.div`
   position: relative;
 `;
 
+const UpdatedCard = styled(Card)`
+  margin-bottom: 0;
+`;
+
 const BtnAll = styled(Link)`
   text-decoration: none;
   background: none;
@@ -50,7 +54,7 @@ export default () => {
           <Row>
             <HorizontalScroll>
               <Col xs={6} sm={5} md={4}>
-                <Card
+                <UpdatedCard
                   picSrc={image}
                   picSrc2x={image2x}
                   price="82"
@@ -62,7 +66,7 @@ export default () => {
                 />
               </Col>
               <Col xs={6} sm={5} md={4}>
-                <Card
+                <UpdatedCard
                   picSrc={image2}
                   picSrc2x={image22x}
                   price="82"
@@ -74,7 +78,7 @@ export default () => {
                 />
               </Col>
               <Col xs={6} sm={5} md={4}>
-                <Card
+                <UpdatedCard
                   picSrc={image3}
                   picSrc2x={image32x}
                   price="200"

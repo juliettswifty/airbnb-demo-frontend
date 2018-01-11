@@ -31,22 +31,19 @@ class Dropdown extends React.Component {
   state = {
     isOpen: false
   };
+
   handleClickOutside = () => {
-    if (this.state.isOpen) {
-      this.setState({ isOpen: false });
-    }
+    this.setState(prevState => ({ isOpen: false }));
   };
-  toggler = () => {
-    if (this.state.isOpen) {
-      this.setState({ isOpen: false });
-    } else {
-      this.setState({ isOpen: true });
-    }
+
+  openCalendar = () => {
+    this.setState(prevState => ({ isOpen: !prevState.isOpen }));
   };
+
   render() {
     return (
       <BtnContainer>
-        <Button onClick={this.toggler}>Dates</Button>
+        <Button onClick={this.openCalendar}>Dates</Button>
         {this.state.isOpen && <Dates />}
       </BtnContainer>
     );

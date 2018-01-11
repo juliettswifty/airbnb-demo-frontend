@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 import { Grid, Row, Col } from "react-flexbox-grid";
-import { Link } from "react-router-dom";
 import Dropdown from "./Dropdown";
 
 const Button = styled.button`
@@ -23,7 +22,7 @@ const Button = styled.button`
   }
 `;
 
-const ButtonHide = styled.button`
+const HiddenBtn = styled.button`
   display: none;
   &:hover {
     background: #f2f2f2;
@@ -57,9 +56,9 @@ export default () => {
           <Col xs={12} md={8}>
             <Dropdown />
             <Button>Guests</Button>
-            <ButtonHide>Room type</ButtonHide>
-            <ButtonHide>Price</ButtonHide>
-            <ButtonHide>Instant book</ButtonHide>
+            <HiddenBtn>Room type</HiddenBtn>
+            <HiddenBtn>Price</HiddenBtn>
+            <HiddenBtn>Instant book</HiddenBtn>
             <Button>More filters</Button>
           </Col>
         </Row>

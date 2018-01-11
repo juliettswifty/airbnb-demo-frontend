@@ -35,10 +35,6 @@ const MapContainer = styled.div`
   }
 `;
 
-const CardContainer = styled.div`
-  margin-bottom: 40px;
-`;
-
 const Text = styled.p`
   font-size: 1rem;
   color: #383838;
@@ -81,88 +77,76 @@ export default () => {
             <Positioner>
               <Row>
                 <Col xs={12} sm={6}>
-                  <CardContainer>
-                    <Card
-                      picSrc={image}
-                      picSrc2x={image2x}
-                      price="82"
-                      title="La Salentina, see, nature & relax"
-                      rentType="Entire house"
-                      bedsCount="9"
-                      reviewsCount="97"
-                      houseGrade="Superhost"
-                    />
-                  </CardContainer>
+                  <Card
+                    picSrc={image}
+                    picSrc2x={image2x}
+                    price={82}
+                    title="La Salentina, see, nature & relax"
+                    rentType="Entire house"
+                    bedsCount={9}
+                    reviewsCount={97}
+                    houseGrade="Superhost"
+                  />
                 </Col>
                 <Col xs={12} sm={6}>
-                  <CardContainer>
-                    <Card
-                      picSrc={image2}
-                      picSrc2x={image22x}
-                      price="82"
-                      title="Your private 3 bedr. riad and exclusi…"
-                      rentType="Entire house"
-                      bedsCount="5"
-                      reviewsCount="161"
-                      houseGrade="Superhost"
-                    />
-                  </CardContainer>
+                  <Card
+                    picSrc={image2}
+                    picSrc2x={image22x}
+                    price={82}
+                    title="Your private 3 bedr. riad and exclusi…"
+                    rentType="Entire house"
+                    bedsCount={5}
+                    reviewsCount={161}
+                    houseGrade="Superhost"
+                  />
                 </Col>
                 <Col xs={12} sm={6}>
-                  <CardContainer>
-                    <Card
-                      picSrc={image3}
-                      picSrc2x={image32x}
-                      price="200"
-                      title="Dreamy Tropical Tree House"
-                      rentType="Entire house"
-                      bedsCount="1"
-                      reviewsCount="364"
-                      houseGrade="Superhost"
-                    />
-                  </CardContainer>
+                  <Card
+                    picSrc={image3}
+                    picSrc2x={image32x}
+                    price={200}
+                    title="Dreamy Tropical Tree House"
+                    rentType="Entire house"
+                    bedsCount={1}
+                    reviewsCount={364}
+                    houseGrade="Superhost"
+                  />
                 </Col>
                 <Col xs={12} sm={6}>
-                  <CardContainer>
-                    <Card
-                      picSrc={image4}
-                      picSrc2x={image42x}
-                      price="110"
-                      title="Best location old town luxury loft"
-                      rentType="Entire house"
-                      bedsCount="1"
-                      reviewsCount="369"
-                      houseGrade="Superhost"
-                    />
-                  </CardContainer>
+                  <Card
+                    picSrc={image4}
+                    picSrc2x={image42x}
+                    price={110}
+                    title="Best location old town luxury loft"
+                    rentType="Entire house"
+                    bedsCount={1}
+                    reviewsCount={369}
+                    houseGrade="Superhost"
+                  />
                 </Col>
                 <Col xs={12} sm={6}>
-                  <CardContainer>
-                    <Card
-                      picSrc={image5}
-                      picSrc2x={image52x}
-                      price="83"
-                      title="Lussuoso. Vista incantevole."
-                      rentType="Entire house"
-                      bedsCount="6"
-                      reviewsCount="105"
-                      houseGrade="Superhost"
-                    />
-                  </CardContainer>
+                  <Card
+                    picSrc={image5}
+                    picSrc2x={image52x}
+                    price={83}
+                    title="Lussuoso. Vista incantevole."
+                    rentType="Entire house"
+                    bedsCount={6}
+                    reviewsCount={105}
+                    houseGrade="Superhost"
+                  />
                 </Col>
                 <Col xs={12} sm={6}>
-                  <CardContainer>
-                    <Card
-                      picSrc={image6}
-                      picSrc2x={image62x}
-                      price="200"
-                      title="In the historical center of Lecce"
-                      rentType="Entire house"
-                      bedsCount="3"
-                      reviewsCount="221"
-                      houseGrade="Superhost"
-                    />
-                  </CardContainer>
+                  <Card
+                    picSrc={image6}
+                    picSrc2x={image62x}
+                    price={200}
+                    title="In the historical center of Lecce"
+                    rentType="Entire house"
+                    bedsCount={3}
+                    reviewsCount={221}
+                    houseGrade="Superhost"
+                  />
                 </Col>
               </Row>
               <Row>

@@ -7,6 +7,7 @@ const Card = styled.div`
   display: flex;
   flex-direction: column;
   overflow: hidden;
+  margin-bottom: 40px;
 `;
 
 const Image = styled.img`
@@ -46,6 +47,7 @@ const Star = styled.img`
     margin-right: 8px;
   }
 `;
+
 export default props => {
   return (
     <Card>
@@ -54,7 +56,7 @@ export default props => {
         srcSet={props.picSrc2x}
         alt="image experiense"
       />
-      <Row start="xs" top="xs">
+      <Row start="xs">
         <Col xs>
           <TextContainer>
             <Name>
