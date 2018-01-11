@@ -18,12 +18,12 @@ const Container = styled.div`
   position: relative;
 `;
 
-const BtnAll = styled.p`
+const BtnAll = styled(Link)`
+  text-decoration: none;
   background: none;
   border: none;
   color: #383838;
   line-height: 24px;
-  text-decoration: none;
   font-size: 0.875rem;
 `;
 
@@ -41,11 +41,9 @@ export default () => {
             <Title>Homes</Title>
           </Col>
           <Col xs>
-            <Link to="/homes">
-              <BtnAll>
-                See all <Arrow src={arrow} alt="Arrow" />
-              </BtnAll>
-            </Link>
+            <BtnAll to="/homes">
+              See all <Arrow src={arrow} alt="Arrow" />
+            </BtnAll>
           </Col>
         </Row>
         <Container>

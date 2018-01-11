@@ -68,6 +68,8 @@ const DayPicker = styled(ReactDayPicker)`
   }
 `;
 
+//.Months .Month:last-child .Weekdays {display:none;}
+
 export default class Example extends React.Component {
   static defaultProps = {
     numberOfMonths: 2
