@@ -4,6 +4,7 @@ import next from "./next.svg";
 
 const BtnNext = styled.button`
   display: none;
+  cursor: pointer;
   @media (min-width: 768px) {
     position: absolute;
     top: 35%;

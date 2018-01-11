@@ -5,6 +5,7 @@ import SearchForm from "./SearchForm";
 import Nav from "./Nav";
 import { Grid, Row, Col } from "react-flexbox-grid";
 import Menu from "./Menu";
+import { Link } from "react-router-dom";
 
 const Header = styled.header`
   padding: 16px 0;
@@ -19,6 +20,7 @@ const Header = styled.header`
 
 const Logo = styled.img`
   display: none;
+  cursor: pointer;
   @media (min-width: 769px) {
     display: block;
   }
@@ -31,7 +33,9 @@ export default () => {
         <Row start="xs" middle="xs">
           <Col xs={2} md={1}>
             <Menu />
-            <Logo src={logo} alt="logo" />
+            <Link to="/">
+              <Logo src={logo} alt="logo" />
+            </Link>
           </Col>
           <Col xs={10} sm={7} md={5}>
             <SearchForm />
