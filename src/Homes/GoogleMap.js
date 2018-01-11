@@ -8,6 +8,7 @@ const Container = styled.div`
   height: 500px;
   width: 100%;
 `;
+console.log(process.env.REACT_APP_GOOGLE_API);
 const Component = styled.div``;
 
 export default class SimpleMap extends Component {
@@ -21,6 +22,10 @@ export default class SimpleMap extends Component {
       <GoogleMapReact
         defaultCenter={this.props.center}
         defaultZoom={this.props.zoom}
+        bootstrapURLKeys={{
+          key: process.env.REACT_APP_GOOGLE_API,
+          language: "en"
+        }}
       >
         <Container lat={59.955413} lng={30.337844} text={"Kreyser Avrora"} />
       </GoogleMapReact>
