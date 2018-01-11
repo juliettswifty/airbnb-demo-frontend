@@ -30,7 +30,7 @@ const MapContainer = styled.div`
     position: fixed;
     top: 140px;
     right: 0;
-    height: 100vh;
+    height: calc(100% - 8.5rem);
     display: inline-block;
   }
 `;

@@ -8,14 +8,6 @@ const BtnContainer = styled.div`
   position: relative;
 `;
 
-const DatesContainer = styled.div`
-  position: absolute;
-  top: 52px;
-  left: 0;
-  border: 1px solid rgba(72, 72, 72, 0.2);
-  border-radius: 4px;
-`;
-
 const Button = styled.button`
   display: inline-block;
   border: 1px solid rgba(72, 72, 72, 0.2);
@@ -55,11 +47,7 @@ class Dropdown extends React.Component {
     return (
       <BtnContainer>
         <Button onClick={this.toggler}>Dates</Button>
-        {this.state.isOpen && (
-          <DatesContainer>
-            <Dates />
-          </DatesContainer>
-        )}
+        {this.state.isOpen && <Dates />}
       </BtnContainer>
     );
   }
