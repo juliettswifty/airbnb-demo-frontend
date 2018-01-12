@@ -68,7 +68,16 @@ const DayPicker = styled(ReactDayPicker)`
   .DayPicker-Weekdays {
     color: #636363;
     font-size: 0.75rem;
+    &:last-of-type {
+      display: none;
+    }
+    @media (min-width: 768px) {
+      &:last-of-type {
+        display: block;
+      }
+    }
   }
+
   .DayPicker-Caption {
     font-family: "CircularBold", sans-serif;
     font-size: 1rem;
