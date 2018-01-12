@@ -12,7 +12,35 @@ const Container = styled.div`
   border: 1px solid rgba(72, 72, 72, 0.2);
   border-radius: 4px;
   background: #fff;
-  width: 711px;
+  width: 360px;
+  @media (min-width: 768px) {
+    width: 711px;
+  }
+`;
+
+const WrapperBtn = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+
+const BtnCancel = styled.button`
+  font-size: 1rem;
+  text-align: center;
+  color: #636363;
+  background: #fff;
+  border: none;
+  width: 110px;
+  height: 64px;
+`;
+
+const BtnApply = styled.button`
+  font-size: 1rem;
+  text-align: center;
+  color: #0f7276;
+  background: #fff;
+  border: none;
+  width: 110px;
+  height: 64px;
 `;
 
 const DayPicker = styled(ReactDayPicker)`
@@ -21,9 +49,22 @@ const DayPicker = styled(ReactDayPicker)`
     justify-content: center;
     width: auto;
   }
+
   .DayPicker-Month {
     margin: 1.26rem;
+    display: block;
+    @media (min-width: 575px) {
+      &:last-of-type {
+        display: none;
+      }
+    }
+    @media (min-width: 768px) {
+      &:last-of-type {
+        display: block;
+      }
+    }
   }
+
   .DayPicker-Weekdays {
     color: #636363;
     font-size: 0.75rem;
@@ -68,8 +109,6 @@ const DayPicker = styled(ReactDayPicker)`
   }
 `;
 
-//.Months .Month:last-child .Weekdays {display:none;}
-
 export default class Example extends React.Component {
   static defaultProps = {
     numberOfMonths: 2
@@ -103,16 +142,15 @@ export default class Example extends React.Component {
     const modifiers = { start: from, end: to };
     return (
       <Container>
-        <div className="RangeExample">
-          <DayPicker
-            className="Selectable"
-            numberOfMonths={this.props.numberOfMonths}
-            selectedDays={[from, { from, to }]}
-            modifiers={modifiers}
-            onDayClick={this.handleDayClick}
-          />
-          <Helmet>
-            <style>{`
+        <DayPicker
+          className="Selectable"
+          numberOfMonths={this.props.numberOfMonths}
+          selectedDays={[from, { from, to }]}
+          modifiers={modifiers}
+          onDayClick={this.handleDayClick}
+        />
+        <Helmet>
+          <style>{`
             .Selectable .DayPicker-Day--selected:not(.DayPicker-Day--start):not(.DayPicker-Day--end):not(.DayPicker-Day--outside) {
               background: rgba(0, 132, 137, 0.1) !important;
               border: 1px solid #9CD9D9 !important;
@@ -130,8 +168,11 @@ export default class Example extends React.Component {
               border: 1px solid #008489 !important;
             }
           `}</style>
-          </Helmet>
-        </div>
+        </Helmet>
+        <WrapperBtn>
+          <BtnCancel>Cancel</BtnCancel>
+          <BtnApply>Apply</BtnApply>
+        </WrapperBtn>
       </Container>
     );
   }
