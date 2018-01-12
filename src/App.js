@@ -4,17 +4,11 @@ import { BrowserRouter, Route } from "react-router-dom";
 import Landing from "./Landing/";
 import Header from "./Header";
 import Homes from "./Homes";
-import { Helmet } from "react-helmet";
 
 class App extends Component {
   render() {
     return (
       <div>
-        <Helmet>
-          <meta charSet="utf-8" />
-          <title>Demo Air Bnb</title>
-        </Helmet>
-
         <BrowserRouter>
           <div className="App">
             <Header />

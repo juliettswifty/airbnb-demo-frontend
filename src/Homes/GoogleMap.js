@@ -7,6 +7,7 @@ const Container = styled.div`
   position: fixed;
   height: 500px;
   width: 100%;
+  z-index: -2;
 `;
 console.log(process.env.REACT_APP_GOOGLE_API);
 const Component = styled.div``;

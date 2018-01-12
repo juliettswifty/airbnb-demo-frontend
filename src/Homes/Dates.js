@@ -7,6 +7,7 @@ import arrow from "./close.svg";
 
 const Container = styled.div`
   position: absolute;
+  z-index: 10;
   top: 52px;
   left: 0;
   border: 1px solid rgba(72, 72, 72, 0.2);

@@ -53,7 +53,7 @@ export default () => {
     <Filter>
       <Grid>
         <Row start="xs">
-          <Col xs={12} md={8}>
+          <Col xs={12} lg={8}>
             <Dropdown />
             <Button>Guests</Button>
             <HiddenBtn>Room type</HiddenBtn>

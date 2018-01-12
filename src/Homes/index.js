@@ -18,31 +18,35 @@ import image52x from "./Rectangle5@2x.png";
 import image6 from "./Rectangle6.png";
 import image62x from "./Rectangle6@2x.png";
 import location from "./location.svg";
+import { Helmet } from "react-helmet";
 
-const Positioner = styled.div`
+const Container = styled.div`
   margin-top: 160px;
 `;
 
 const MapContainer = styled.div`
   display: none;
-  @media (min-width: 768px) {
+  @media (min-width: 992px) {
     width: 34%;
     position: fixed;
     top: 140px;
     right: 0;
-    height: calc(100% - 8.5rem);
+    z-index: -10;
+    height: calc(100% - 8.9rem);
     display: inline-block;
   }
 `;
 
-const Text = styled.p`
+const TotalText = styled.p`
   font-size: 1rem;
   color: #383838;
-  margin-bottom: 40px;
-  &:last-of-type {
-    color: #636363;
-    margin-bottom: 25px;
-  }
+  margin-top: 20px;
+`;
+
+const Text = styled.p`
+  font-size: 1rem;
+  color: #636363;
+  margin-top: 30px;
 `;
 
 const IconContainer = styled.div`
@@ -67,14 +71,30 @@ const IconLocation = styled.button`
   }
 `;
 
+const ModalLayer = styled.div`
+  display: none;
+  @media (min-width: 768px) {
+    display: none;
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    background: #ffffff;
+    opacity: 0.8;
+  }
+`;
+
 export default () => {
   return (
     <div>
+      <Helmet>
+        <title>Homes</title>
+      </Helmet>
+      <ModalLayer />
       <Filter />
       <Grid>
         <Row>
-          <Col xs={12} md={8}>
-            <Positioner>
+          <Col xs={12} lg={8}>
+            <Container>
               <Row>
                 <Col xs={12} sm={6}>
                   <Card
@@ -152,7 +172,7 @@ export default () => {
               <Row>
                 <Col xs={12}>
                   <Pagination />
-                  <Text>1 – 18 of 300+ Rentals</Text>
+                  <TotalText>1 – 18 of 300+ Rentals</TotalText>
                   <Row>
                     <Col xs={12} sm={10} md={12}>
                       <Text>
@@ -170,7 +190,7 @@ export default () => {
                   </Row>
                 </Col>
               </Row>
-            </Positioner>
+            </Container>
           </Col>
 
           <MapContainer>
