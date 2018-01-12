@@ -1,9 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 import Helmet from "react-helmet";
-import ReactDayPicker, { DateUtils } from "react-day-picker";
+import DayPicker, { DateUtils } from "react-day-picker";
 import "react-day-picker/lib/style.css";
-import arrow from "./close.svg";
+import "./dayPicker.css";
 
 const Container = styled.div`
   position: absolute;
@@ -42,81 +42,6 @@ const BtnApply = styled.button`
   border: none;
   width: 110px;
   height: 64px;
-`;
-
-const DayPicker = styled(ReactDayPicker)`
-  .DayPicker {
-    display: flex;
-    justify-content: center;
-    width: auto;
-  }
-
-  .DayPicker-Month {
-    margin: 1.26rem;
-    display: block;
-    @media (min-width: 575px) {
-      &:last-of-type {
-        display: none;
-      }
-    }
-    @media (min-width: 768px) {
-      &:last-of-type {
-        display: block;
-      }
-    }
-  }
-
-  .DayPicker-Weekdays {
-    color: #636363;
-    font-size: 0.75rem;
-    &:last-of-type {
-      display: none;
-    }
-    @media (min-width: 768px) {
-      &:last-of-type {
-        display: block;
-      }
-    }
-  }
-
-  .DayPicker-Caption {
-    font-family: "CircularBold", sans-serif;
-    font-size: 1rem;
-    text-align: center;
-    margin: 1.5rem 0;
-  }
-  .DayPicker-NavButton {
-    top: 2rem;
-    width: 40px;
-    height: 32px;
-    border: 1px solid rgba(118, 118, 118, 0.3);
-    box-sizing: border-box;
-    border-radius: 2px;
-  }
-  .DayPicker-NavButton--prev {
-    margin-right: 39rem;
-    background-image: url(${arrow});
-  }
-  .DayPicker-NavButton--next {
-    background-image: url(${arrow});
-    transform: rotate(180deg);
-  }
-  .DayPicker-Day {
-    width: 2.75rem;
-    height: 2.75rem;
-    border: 1px solid #d5d5d5;
-    font-size: 0.85rem;
-    padding: 0;
-    &:hover {
-      background: #e4e7e7 !important;
-      border: 1px solid #d4d9d9 !important;
-      border-radius: 0 !important;
-      //в доке тоже добавляют important для стилизации, без него не работает http://react-day-picker.js.org/examples/selected-range
-    }
-  }
-  .DayPicker-Day--outside {
-    border: none;
-  }
 `;
 
 export default class Example extends React.Component {

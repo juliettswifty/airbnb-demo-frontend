@@ -74,7 +74,7 @@ const IconLocation = styled.button`
 const ModalLayer = styled.div`
   display: none;
   @media (min-width: 768px) {
-    display: none;
+    display: block;
     position: fixed;
     width: 100%;
     height: 100vh;
