@@ -27,7 +27,7 @@ const BtnModal = styled.button`
     border-color: #008489;
   }
 `;
-/*
+
 export class Dropdown extends React.Component {
   state = {
     isOpen: false
@@ -42,10 +42,7 @@ export class Dropdown extends React.Component {
     return (
       <PortalWithState closeOnOutsideClick closeOnEsc>
         {({ openPortal, closePortal, isOpen, portal }) => [
-          <BtnModal
-            key="foo"
-            onClick={openPortal} onClick={this.addBackground}
-          >
+          <BtnModal key="foo" onClick={openPortal}>
             Dates
           </BtnModal>,
           portal(<Dates />)
@@ -54,8 +51,8 @@ export class Dropdown extends React.Component {
     );
   }
 }
-*/
 
+/*
 class Dropdown extends React.Component {
   state = {
     isOpen: false
@@ -79,3 +76,4 @@ class Dropdown extends React.Component {
   }
 }
 export default onClickOutside(Dropdown);
+*/
