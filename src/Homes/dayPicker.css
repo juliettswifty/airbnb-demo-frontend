@@ -8,19 +8,12 @@
   margin: 1.26rem;
   display: block;
 }
-@media (min-width: 575px) {
-  .DayPicker-Month:last-of-type {
-    display: none;
-  }
-}
 
 .DayPicker-Weekdays {
   color: #636363 !important;
   font-size: 0.75rem;
 }
-.DayPicker-Weekdays:last-of-type {
-  display: none;
-}
+
 @media (min-width: 768px) {
   .DayPicker-Month:last-of-type {
     display: block;
@@ -37,6 +30,7 @@
 }
 .DayPicker-NavButton {
   display: none;
+  margin-top: 10px;
   top: 2rem;
   width: 40px;
   height: 32px;
@@ -53,6 +47,11 @@
   }
   .DayPicker-NavButton {
     display: block;
+  }
+}
+@media (min-width: 768px) {
+  .DayPicker-NavButton--prev {
+    margin-right: 88%;
   }
 }
 

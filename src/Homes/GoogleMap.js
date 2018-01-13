@@ -9,7 +9,7 @@ const Container = styled.div`
   width: 100%;
   z-index: -2;
 `;
-console.log(process.env.REACT_APP_GOOGLE_API);
+
 const Component = styled.div``;
 
 export default class SimpleMap extends Component {

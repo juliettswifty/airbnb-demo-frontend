@@ -89,7 +89,7 @@ export default () => {
       <Helmet>
         <title>Homes</title>
       </Helmet>
-      <ModalLayer />
+
       <Filter />
       <Grid>
         <Row>
