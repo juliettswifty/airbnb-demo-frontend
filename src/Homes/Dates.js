@@ -96,9 +96,7 @@ const SaveBtn = styled.button`
 `;
 
 export default class Example extends React.Component {
-  static defaultProps = {
-    numberOfMonths: 1
-  };
+  static defaultProps = {};
 
   monthsNumber() {
     if (window.matchMedia("(min-width: 992px)").matches) {
@@ -128,9 +126,11 @@ export default class Example extends React.Component {
     };
   }
 
+  //промежуток выбираем
   handleDayClick(day, { disabled, selected }) {
     if (disabled) return;
     const range = DateUtils.addDayToRange(day, this.state);
+    console.log(range);
     this.setState(range);
   }
 
@@ -139,7 +139,6 @@ export default class Example extends React.Component {
   }
 
   render() {
-    //const fromTo = from.toLocaleDateString();
     const { from, to } = this.state;
     const modifiers = { start: from, end: to };
     return (

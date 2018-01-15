@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { Grid, Row, Col } from "react-flexbox-grid";
+import { Col } from "react-flexbox-grid";
 
 const Image = styled.img`
   width: 100%;

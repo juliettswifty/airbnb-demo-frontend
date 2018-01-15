@@ -71,6 +71,7 @@ const IconLocation = styled.button`
   }
 `;
 
+/*
 const ModalLayer = styled.div`
   display: none;
   @media (min-width: 768px) {
@@ -81,7 +82,7 @@ const ModalLayer = styled.div`
     background: #ffffff;
     opacity: 0.8;
   }
-`;
+`;*/
 
 export default () => {
   return (

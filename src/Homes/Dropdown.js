@@ -1,7 +1,6 @@
 import onClickOutside from "react-onclickoutside";
 import React from "react";
 import styled from "styled-components";
-import { Grid, Row, Col } from "react-flexbox-grid";
 import Dates from "./Dates";
 import { PortalWithState } from "react-portal";
 import close from "./close1.svg";
@@ -107,7 +106,7 @@ class Dropdown extends React.Component {
     this.setState(prevState => ({ isOpen: false }));
   };
 
-  openCalendar = () => {
+  openModal = () => {
     this.setState(prevState => ({ isOpen: !prevState.isOpen }));
   };
 
@@ -158,7 +157,7 @@ class Dropdown extends React.Component {
           } else {
             return (
               <BtnContainer>
-                <BtnModal onClick={this.openCalendar}>Dates</BtnModal>
+                <BtnModal onClick={this.openModal}>Dates</BtnModal>
                 {this.state.isOpen && <Dates />}
               </BtnContainer>
             );
