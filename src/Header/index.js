@@ -40,7 +40,7 @@ export default () => {
           <Col xs={10} sm={7} md={5}>
             <SearchForm />
           </Col>
-          <Col sm={0} md={4} mdOffset={1} lg={4} lgOffset={2}>
+          <Col sm={0} md={4} mdOffset={2} lg={4} lgOffset={2}>
             <Nav />
           </Col>
         </Row>

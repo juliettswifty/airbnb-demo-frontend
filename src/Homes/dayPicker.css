@@ -80,3 +80,25 @@
 .DayPicker-Day--today {
   color: #383838 !important;
 }
+
+.Selectable
+  .DayPicker-Day--selected:not(.DayPicker-Day--start):not(.DayPicker-Day--end):not(.DayPicker-Day--outside) {
+  background: rgba(0, 132, 137, 0.1) !important;
+  border: 1px solid #9cd9d9 !important;
+  color: #383838;
+}
+.Selectable .DayPicker-Day {
+  border-radius: 0 !important;
+}
+.Selectable
+  .DayPicker-Day--start:not(.DayPicker-Day--disabled):not(.DayPicker-Day--outside) {
+  color: #fff !important;
+  background: #008489 !important;
+  border: 1px solid #008489 !important;
+}
+.Selectable
+  .DayPicker-Day--end:not(.DayPicker-Day--disabled):not(.DayPicker-Day--outside) {
+  color: #fff !important;
+  background: #008489 !important;
+  border: 1px solid #008489 !important;
+}

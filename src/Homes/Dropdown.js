@@ -7,6 +7,75 @@ import close from "./close1.svg";
 import arrow from "./arrow-calendar.svg";
 import MediaQuery from "react-responsive";
 
+const Main = styled.div`
+  position: fixed;
+  overflow: auto;
+  z-index: 10;
+  left: 0;
+  top: 0;
+  height: 100%;
+  border: 1px solid rgba(72, 72, 72, 0.2);
+  border-radius: 4px;
+  background: #fff;
+  width: 100%;
+  padding: 160px 0 70px;
+  box-sizing: border-box;
+  @media (min-width: 575px) {
+    position: absolute;
+    top: 53px;
+    left: 0;
+    height: auto;
+    width: 360px;
+    padding: 0;
+    box-shadow: 0px 2px 4px rgba(72, 72, 72, 0.08);
+  }
+  @media (min-width: 768px) {
+    width: 720px;
+  }
+`;
+
+const Footer = styled.div`
+  display: none;
+  @media (min-width: 575px) {
+    display: flex;
+    justify-content: space-between;
+  }
+`;
+
+const BtnCancel = styled.button`
+  display: none;
+  @media (min-width: 575px) {
+    display: inline-block;
+    font-size: 1rem;
+    text-align: center;
+    color: #636363;
+    background: #fff;
+    border: none;
+    width: 110px;
+    height: 64px;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+`;
+
+const BtnApply = styled.button`
+  display: none;
+  @media (min-width: 575px) {
+    display: inline-block;
+    font-size: 1rem;
+    text-align: center;
+    color: #0f7276;
+    background: #fff;
+    border: none;
+    width: 110px;
+    height: 64px;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+`;
+
 const BtnContainer = styled.div`
   display: inline-block;
   position: relative;
@@ -94,12 +163,9 @@ const WeekDay = styled.p`
 class Dropdown extends React.Component {
   state = {
     isOpen: false,
-    nameBtn: "Dates"
-  };
-
-  addBackground = () => {
-    this.setState(prevState => ({ isOpen: !prevState.isOpen }));
-    console.log(this.isOpen);
+    nameBtn: "Dates",
+    fromDate: undefined,
+    toDate: undefined
   };
 
   handleClickOutside = () => {
@@ -110,8 +176,12 @@ class Dropdown extends React.Component {
     this.setState(prevState => ({ isOpen: !prevState.isOpen }));
   };
 
-  dateChanger = (fromDate, toDate) => {
-    return "Dates";
+  onChange = (fromDate, toDate) => {
+    this.setState(prevState => ({ fromDate, toDate }));
+  };
+
+  cancelDates = () => {
+    console.log(this.state);
   };
 
   render() {
@@ -148,7 +218,13 @@ class Dropdown extends React.Component {
                           <WeekDay>Sa</WeekDay>
                         </WeekdayContainer>
                       </HeaderModal>
-                      <Dates />
+                      <Main>
+                        <Dates
+                          fromDate={this.fromDate}
+                          toDate={this.toDate}
+                          onChange={this.onChange}
+                        />
+                      </Main>
                     </div>
                   )
                 ]}
@@ -158,7 +234,19 @@ class Dropdown extends React.Component {
             return (
               <BtnContainer>
                 <BtnModal onClick={this.openModal}>Dates</BtnModal>
-                {this.state.isOpen && <Dates />}
+                {this.state.isOpen && (
+                  <Main>
+                    <Dates
+                      from={this.from}
+                      to={this.to}
+                      onChange={this.onChange}
+                    />
+                    <Footer>
+                      <BtnCancel onClick={this.cancelDates}>Cancel</BtnCancel>
+                      <BtnApply onClick={this.openModal}>Apply</BtnApply>
+                    </Footer>
+                  </Main>
+                )}
               </BtnContainer>
             );
           }
