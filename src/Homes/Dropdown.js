@@ -6,6 +6,7 @@ import { PortalWithState } from "react-portal";
 import close from "./close1.svg";
 import arrow from "./arrow-calendar.svg";
 import MediaQuery from "react-responsive";
+import moment from "moment";
 
 const Main = styled.div`
   position: fixed;
@@ -81,7 +82,7 @@ const BtnContainer = styled.div`
   position: relative;
 `;
 
-const BtnModal = styled.button`
+const BtnModal = styled.input`
   display: inline-block;
   border: 1px solid rgba(72, 72, 72, 0.2);
   box-sizing: border-box;
@@ -160,10 +161,37 @@ const WeekDay = styled.p`
   font-size: 0.75rem;
 `;
 
+const formateDateLabel = (startDate, endDate, isOpen) => {
+  console.log(startDate);
+  if (isOpen) {
+    if ((startDate, endDate)) {
+      if (moment(startDate).format("MMM") === moment(endDate).format("MMM")) {
+        return `${moment(startDate).format("MMM D")} - ${moment(endDate).format(
+          "D"
+        )}`;
+      } else {
+        return `${moment(startDate).format("MMM D")} - ${moment(endDate).format(
+          "MMM D"
+        )}`;
+      }
+    }
+    // if (startDate && endDate) {
+    //   console.log(startDate, endDate, isOpen);
+    //   return moment(startDate).format("MMM, D");
+    //   // `${startDate} — ${endDate}`
+    //   // } else if (isOpen) {
+    //   //   return "Check in — Check out";
+    // }
+  } else {
+    return "Dates";
+  }
+};
+
 class Dropdown extends React.Component {
   state = {
+    value: "Dates",
     isOpen: false,
-    nameBtn: "Dates",
+    applyed: false,
     fromDate: undefined,
     toDate: undefined
   };
@@ -192,10 +220,7 @@ class Dropdown extends React.Component {
             return (
               <PortalWithState closeOnOutsideClick closeOnEsc>
                 {({ openPortal, closePortal, isOpen, portal }) => [
-                  <BtnModal key="foo" onClick={openPortal}>
-                    Dates
-                  </BtnModal>,
-
+                  <BtnModal key="foo" onClick={openPortal} />,
                   portal(
                     <div>
                       <HeaderModal>
@@ -233,7 +258,15 @@ class Dropdown extends React.Component {
           } else {
             return (
               <BtnContainer>
-                <BtnModal onClick={this.openModal}>Dates</BtnModal>
+                <BtnModal
+                  onClick={this.openModal}
+                  value={formateDateLabel(
+                    this.state.fromDate,
+                    this.state.toDate,
+                    this.state.isOpen
+                  )}
+                  type="button"
+                />
                 {this.state.isOpen && (
                   <Main>
                     <Dates

@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "date-fns": "^1.29.0",
     "google-map-react": "^0.27.0",
     "matchmedia-polyfill": "^0.3.0",
     "moment": "^2.20.1",
