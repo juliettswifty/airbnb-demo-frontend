@@ -35,48 +35,6 @@ const Main = styled.div`
   }
 `;
 
-const Footer = styled.div`
-  display: none;
-  @media (min-width: 575px) {
-    display: flex;
-    justify-content: space-between;
-  }
-`;
-
-const BtnCancel = styled.button`
-  display: none;
-  @media (min-width: 575px) {
-    display: inline-block;
-    font-size: 1rem;
-    text-align: center;
-    color: #636363;
-    background: #fff;
-    border: none;
-    width: 110px;
-    height: 64px;
-    &:hover {
-      text-decoration: underline;
-    }
-  }
-`;
-
-const BtnApply = styled.button`
-  display: none;
-  @media (min-width: 575px) {
-    display: inline-block;
-    font-size: 1rem;
-    text-align: center;
-    color: #0f7276;
-    background: #fff;
-    border: none;
-    width: 110px;
-    height: 64px;
-    &:hover {
-      text-decoration: underline;
-    }
-  }
-`;
-
 const BtnContainer = styled.div`
   display: inline-block;
   position: relative;
@@ -161,27 +119,20 @@ const WeekDay = styled.p`
   font-size: 0.75rem;
 `;
 
-const formateDateLabel = (startDate, endDate, isOpen) => {
-  console.log(startDate);
-  if (isOpen) {
-    if ((startDate, endDate)) {
-      if (moment(startDate).format("MMM") === moment(endDate).format("MMM")) {
-        return `${moment(startDate).format("MMM D")} - ${moment(endDate).format(
-          "D"
-        )}`;
-      } else {
-        return `${moment(startDate).format("MMM D")} - ${moment(endDate).format(
-          "MMM D"
-        )}`;
-      }
+const formateDateLabel = (value, startDate, endDate, isOpen, apply) => {
+  if ((startDate, endDate)) {
+    if (moment(startDate).format("MMM") === moment(endDate).format("MMM")) {
+      value = `${moment(startDate).format("MMM D")} - ${moment(endDate).format(
+        "D"
+      )}`;
+      console.log(value);
+      return value;
+    } else {
+      value = `${moment(startDate).format("MMM D")} - ${moment(endDate).format(
+        "MMM D"
+      )}`;
+      return value;
     }
-    // if (startDate && endDate) {
-    //   console.log(startDate, endDate, isOpen);
-    //   return moment(startDate).format("MMM, D");
-    //   // `${startDate} — ${endDate}`
-    //   // } else if (isOpen) {
-    //   //   return "Check in — Check out";
-    // }
   } else {
     return "Dates";
   }
@@ -191,9 +142,9 @@ class Dropdown extends React.Component {
   state = {
     value: "Dates",
     isOpen: false,
-    applyed: false,
-    fromDate: undefined,
-    toDate: undefined
+    apply: false,
+    startDate: undefined,
+    endDate: undefined
   };
 
   handleClickOutside = () => {
@@ -204,12 +155,12 @@ class Dropdown extends React.Component {
     this.setState(prevState => ({ isOpen: !prevState.isOpen }));
   };
 
-  onChange = (fromDate, toDate) => {
-    this.setState(prevState => ({ fromDate, toDate }));
+  onChange = (startDate, endDate) => {
+    this.setState(prevState => ({ startDate, endDate }));
   };
 
-  cancelDates = () => {
-    console.log(this.state);
+  cancelDates = (startDate, endDate) => {
+    this.setState(prevState => ({ startDate: undefined, endDate: undefined }));
   };
 
   render() {
@@ -220,7 +171,18 @@ class Dropdown extends React.Component {
             return (
               <PortalWithState closeOnOutsideClick closeOnEsc>
                 {({ openPortal, closePortal, isOpen, portal }) => [
-                  <BtnModal key="foo" onClick={openPortal} />,
+                  <BtnModal
+                    key="foo"
+                    onClick={openPortal}
+                    value={formateDateLabel(
+                      this.state.value,
+                      this.state.startDate,
+                      this.state.endDate,
+                      this.state.isOpen,
+                      this.state.apply
+                    )}
+                    type="button"
+                  />,
                   portal(
                     <div>
                       <HeaderModal>
@@ -245,8 +207,8 @@ class Dropdown extends React.Component {
                       </HeaderModal>
                       <Main>
                         <Dates
-                          fromDate={this.fromDate}
-                          toDate={this.toDate}
+                          startDate={this.startDate}
+                          endDate={this.endDate}
                           onChange={this.onChange}
                         />
                       </Main>
@@ -261,23 +223,24 @@ class Dropdown extends React.Component {
                 <BtnModal
                   onClick={this.openModal}
                   value={formateDateLabel(
-                    this.state.fromDate,
-                    this.state.toDate,
-                    this.state.isOpen
+                    this.state.value,
+                    this.state.startDate,
+                    this.state.endDate,
+                    this.state.isOpen,
+                    this.state.apply
                   )}
                   type="button"
                 />
                 {this.state.isOpen && (
                   <Main>
                     <Dates
-                      from={this.from}
-                      to={this.to}
+                      startDate={this.state.startDate}
+                      endDate={this.state.endDate}
                       onChange={this.onChange}
+                      cancelDates={this.cancelDates}
+                      cancel={this.state.cancel}
+                      openModal={this.openModal}
                     />
-                    <Footer>
-                      <BtnCancel onClick={this.cancelDates}>Cancel</BtnCancel>
-                      <BtnApply onClick={this.openModal}>Apply</BtnApply>
-                    </Footer>
                   </Main>
                 )}
               </BtnContainer>

@@ -31,43 +31,79 @@ const SaveBtn = styled.button`
     display: none;
   }
 `;
+const Footer = styled.div`
+  display: none;
+  @media (min-width: 575px) {
+    display: flex;
+    justify-content: space-between;
+  }
+`;
+
+const BtnCancel = styled.button`
+  display: none;
+  @media (min-width: 575px) {
+    display: inline-block;
+    font-size: 1rem;
+    text-align: center;
+    color: #636363;
+    background: #fff;
+    border: none;
+    width: 110px;
+    height: 64px;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+`;
+
+const BtnApply = styled.button`
+  display: none;
+  @media (min-width: 575px) {
+    display: inline-block;
+    font-size: 1rem;
+    text-align: center;
+    color: #0f7276;
+    background: #fff;
+    border: none;
+    width: 110px;
+    height: 64px;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+`;
+const monthsNumber = () => {
+  if (window.matchMedia("(min-width: 992px)").matches) return 2;
+  if (window.matchMedia("(min-width: 575px)").matches) return 1;
+  return 12;
+};
 
 export default class Dates extends React.Component {
-  monthsNumber() {
-    if (window.matchMedia("(min-width: 992px)").matches) {
-      return 2;
-    }
-    if (window.matchMedia("(min-width: 575px)").matches) {
-      return 1;
-    } else {
-      return 12;
-    }
-  }
-
-  constructor(props) {
-    super(props);
-    this.state = this.getInitialState();
-  }
-
-  getInitialState() {
-    return {
-      from: undefined,
-      to: undefined
-    };
-  }
+  state = {
+    startDate: this.props.startDate,
+    endDate: this.props.endDate
+  };
 
   handleDayClick = (day, { disabled, selected }) => {
     if (disabled) return;
-    const onChange = this.props.onChange;
+
     const range = DateUtils.addDayToRange(day, this.state);
+
     this.setState(prevState => {
-      onChange(range.from, range.to);
       return range;
     });
+
+    this.props.onChange(range.from, range.to);
   };
 
   handleResetClick = () => {
-    this.setState(this.getInitialState());
+    this.props.onChange(this.state.startDate, this.state.fromDate);
+    this.setState(prevState => {
+      return {
+        from: undefined,
+        to: undefined
+      };
+    });
   };
 
   render() {
@@ -77,7 +113,7 @@ export default class Dates extends React.Component {
       <div>
         <DayPicker
           className="Selectable"
-          numberOfMonths={this.monthsNumber()}
+          numberOfMonths={monthsNumber()}
           selectedDays={[from, { from, to }]}
           modifiers={modifiers}
           onDayClick={this.handleDayClick}
@@ -85,6 +121,10 @@ export default class Dates extends React.Component {
           isOutsideRange={true}
           disabledDays={{ before: new Date() }}
         />
+        <Footer>
+          <BtnCancel onClick={this.handleResetClick}>Cancel</BtnCancel>
+          <BtnApply onClick={this.props.openModal}>Apply</BtnApply>
+        </Footer>
         <FooterMobile>
           <SaveBtn>Save</SaveBtn>
         </FooterMobile>
