@@ -43,26 +43,28 @@ const Filter = styled.div`
   position: fixed;
   top: 82px;
   width: 100%;
-  z-index: 0;
+  z-index: 1;
   background: #fff;
   box-shadow: 0px 0.5px 0px rgba(72, 72, 72, 0.3);
 `;
 
 export default () => {
   return (
-    <Filter>
-      <Grid>
-        <Row start="xs">
-          <Col xs={12} lg={8}>
-            <Dropdown />
-            <Button>Guests</Button>
-            <HiddenBtn>Room type</HiddenBtn>
-            <HiddenBtn>Price</HiddenBtn>
-            <HiddenBtn>Instant book</HiddenBtn>
-            <Button>More filters</Button>
-          </Col>
-        </Row>
-      </Grid>
-    </Filter>
+    <div>
+      <Filter>
+        <Grid>
+          <Row start="xs">
+            <Col xs={12} lg={8}>
+              <Dropdown />
+              <Button>Guests</Button>
+              <HiddenBtn>Room type</HiddenBtn>
+              <HiddenBtn>Price</HiddenBtn>
+              <HiddenBtn>Instant book</HiddenBtn>
+              <Button>More filters</Button>
+            </Col>
+          </Row>
+        </Grid>
+      </Filter>
+    </div>
   );
 };

@@ -72,6 +72,20 @@ const HeaderModal = styled.div`
   }
 `;
 
+const Overlay = styled.div`
+  display: none;
+  @media (min-width: 575px) {
+    display: block;
+    position: fixed;
+    top: 140px;
+    width: 100%;
+    height: 100vh;
+    background: #ffffff;
+    opacity: 0.8;
+    z-index: 0;
+  }
+`;
+
 const Wrapper = styled.div`
   display: flex;
   justify-content: space-between;
@@ -119,13 +133,12 @@ const WeekDay = styled.p`
   font-size: 0.75rem;
 `;
 
-const formateDateLabel = (value, startDate, endDate, isOpen, apply) => {
+const formateDateLabel = (value, startDate, endDate, isOpen) => {
   if ((startDate, endDate)) {
     if (moment(startDate).format("MMM") === moment(endDate).format("MMM")) {
       value = `${moment(startDate).format("MMM D")} - ${moment(endDate).format(
         "D"
       )}`;
-      console.log(value);
       return value;
     } else {
       value = `${moment(startDate).format("MMM D")} - ${moment(endDate).format(
@@ -142,13 +155,28 @@ class Dropdown extends React.Component {
   state = {
     value: "Dates",
     isOpen: false,
-    apply: false,
     startDate: undefined,
-    endDate: undefined
+    endDate: undefined,
+    isApply: false
   };
 
   handleClickOutside = () => {
-    this.setState(prevState => ({ isOpen: false }));
+    if (!this.state.isApply) {
+      this.setState(prevState => ({
+        isOpen: false,
+        startDate: undefined,
+        endDate: undefined
+      }));
+    } else {
+      this.setState(prevState => ({
+        isOpen: false
+      }));
+    }
+  };
+
+  applyDates = () => {
+    this.setState(prevState => ({ isApply: true }));
+    this.openModal();
   };
 
   openModal = () => {
@@ -226,8 +254,7 @@ class Dropdown extends React.Component {
                     this.state.value,
                     this.state.startDate,
                     this.state.endDate,
-                    this.state.isOpen,
-                    this.state.apply
+                    this.state.isOpen
                   )}
                   type="button"
                 />
@@ -238,10 +265,16 @@ class Dropdown extends React.Component {
                       endDate={this.state.endDate}
                       onChange={this.onChange}
                       cancelDates={this.cancelDates}
-                      cancel={this.state.cancel}
                       openModal={this.openModal}
+                      isApply={this.state.isApply}
+                      applyDates={this.applyDates}
                     />
                   </Main>
+                )}
+                {this.state.isOpen ? (
+                  <Overlay onClick={this.handleClickOutside} />
+                ) : (
+                  false
                 )}
               </BtnContainer>
             );

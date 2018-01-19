@@ -71,19 +71,6 @@ const IconLocation = styled.button`
   }
 `;
 
-/*
-const ModalLayer = styled.div`
-  display: none;
-  @media (min-width: 768px) {
-    display: block;
-    position: fixed;
-    width: 100%;
-    height: 100vh;
-    background: #ffffff;
-    opacity: 0.8;
-  }
-`;*/
-
 export default () => {
   return (
     <div>

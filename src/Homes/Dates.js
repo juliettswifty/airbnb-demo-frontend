@@ -81,12 +81,12 @@ const monthsNumber = () => {
 export default class Dates extends React.Component {
   state = {
     startDate: this.props.startDate,
-    endDate: this.props.endDate
+    endDate: this.props.endDate,
+    isApply: this.props.isApply
   };
 
   handleDayClick = (day, { disabled, selected }) => {
     if (disabled) return;
-
     const range = DateUtils.addDayToRange(day, this.state);
 
     this.setState(prevState => {
@@ -123,7 +123,7 @@ export default class Dates extends React.Component {
         />
         <Footer>
           <BtnCancel onClick={this.handleResetClick}>Cancel</BtnCancel>
-          <BtnApply onClick={this.props.openModal}>Apply</BtnApply>
+          <BtnApply onClick={this.props.applyDates}>Apply</BtnApply>
         </Footer>
         <FooterMobile>
           <SaveBtn>Save</SaveBtn>
