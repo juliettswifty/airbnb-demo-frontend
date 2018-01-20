@@ -1,39 +1,10 @@
-import onClickOutside from "react-onclickoutside";
+//import onClickOutside from "react-onclickoutside";
 import React from "react";
 import styled from "styled-components";
 import Dates from "./Dates";
 import { PortalWithState } from "react-portal";
-import close from "./close1.svg";
-import arrow from "./arrow-calendar.svg";
 import MediaQuery from "react-responsive";
 import moment from "moment";
-
-const Main = styled.div`
-  position: fixed;
-  overflow: auto;
-  z-index: 10;
-  left: 0;
-  top: 0;
-  height: 100%;
-  border: 1px solid rgba(72, 72, 72, 0.2);
-  border-radius: 4px;
-  background: #fff;
-  width: 100%;
-  padding: 160px 0 70px;
-  box-sizing: border-box;
-  @media (min-width: 575px) {
-    position: absolute;
-    top: 53px;
-    left: 0;
-    height: auto;
-    width: 360px;
-    padding: 0;
-    box-shadow: 0px 2px 4px rgba(72, 72, 72, 0.08);
-  }
-  @media (min-width: 768px) {
-    width: 720px;
-  }
-`;
 
 const BtnContainer = styled.div`
   display: inline-block;
@@ -59,19 +30,6 @@ const BtnModal = styled.input`
   }
 `;
 
-const HeaderModal = styled.div`
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  background: #fff;
-  box-shadow: 0px 0.5px 0px rgba(72, 72, 72, 0.3);
-  z-index: 100;
-  @media (min-width: 575px) {
-    display: none;
-  }
-`;
-
 const Overlay = styled.div`
   display: none;
   @media (min-width: 575px) {
@@ -86,54 +44,24 @@ const Overlay = styled.div`
   }
 `;
 
-const Wrapper = styled.div`
-  display: flex;
-  justify-content: space-between;
-  padding: 16px 8px 0;
-`;
+const labelCheckIn = startDate => {
+  if (startDate) {
+    return `${moment(startDate).format("MMM D")}`;
+  } else {
+    return "Check-in";
+  }
+};
 
-const Close = styled.button`
-  background: url(${close}) no-repeat;
-  border: none;
-  width: 16px;
-  height: 16px;
-`;
-const Text = styled.p`
-  margin: 0;
-  color: #383838;
-  font-size: 0.875rem;
-`;
-const Reset = styled.button`
-  margin: 0;
-  font-size: 0.875rem;
-  border: none;
-  background: none;
-  color: #0f7276;
-`;
+const labelCheckOut = endDate => {
+  console.log(endDate);
+  if (endDate) {
+    return `${moment(endDate).format("MMM D")}`;
+  } else {
+    return "Check-out";
+  }
+};
 
-const CheckIn = styled.button`
-  font-family: "CircularLight", sans-serif;
-  padding: 0 0 6px 0;
-  font-size: 1.125rem;
-  border: none;
-  background: none;
-  color: #636363;
-  margin: 40px 16px 16px;
-  color: #008489;
-  border-bottom: 1px solid #008489;
-`;
-
-const WeekdayContainer = styled.div`
-  display: flex;
-  justify-content: space-between;
-  max-width: 300px;
-  margin: 0 auto;
-`;
-const WeekDay = styled.p`
-  font-size: 0.75rem;
-`;
-
-const formateDateLabel = (value, startDate, endDate, isOpen) => {
+const formateDateLabel = (value, startDate, endDate) => {
   if ((startDate, endDate)) {
     if (moment(startDate).format("MMM") === moment(endDate).format("MMM")) {
       value = `${moment(startDate).format("MMM D")} - ${moment(endDate).format(
@@ -151,7 +79,7 @@ const formateDateLabel = (value, startDate, endDate, isOpen) => {
   }
 };
 
-class Dropdown extends React.Component {
+export default class Dropdown extends React.Component {
   state = {
     value: "Dates",
     isOpen: false,
@@ -206,40 +134,21 @@ class Dropdown extends React.Component {
                       this.state.value,
                       this.state.startDate,
                       this.state.endDate,
-                      this.state.isOpen,
-                      this.state.apply
+                      this.state.isOpen
                     )}
                     type="button"
                   />,
                   portal(
                     <div>
-                      <HeaderModal>
-                        <Wrapper>
-                          <Close onClick={closePortal} />
-                          <Text>Dates</Text>
-                          <Reset>Reset</Reset>
-                        </Wrapper>
-
-                        <CheckIn>Check-in</CheckIn>
-                        <img src={arrow} alt="arrow" />
-                        <CheckIn>Check-out</CheckIn>
-                        <WeekdayContainer>
-                          <WeekDay>Su</WeekDay>
-                          <WeekDay>Mo</WeekDay>
-                          <WeekDay>Tu</WeekDay>
-                          <WeekDay>We</WeekDay>
-                          <WeekDay>Th</WeekDay>
-                          <WeekDay>Fr</WeekDay>
-                          <WeekDay>Sa</WeekDay>
-                        </WeekdayContainer>
-                      </HeaderModal>
-                      <Main>
-                        <Dates
-                          startDate={this.startDate}
-                          endDate={this.endDate}
-                          onChange={this.onChange}
-                        />
-                      </Main>
+                      <Dates
+                        startDate={this.startDate}
+                        endDate={this.endDate}
+                        onChange={this.onChange}
+                        applyDates={this.applyDates}
+                        closePortal={closePortal}
+                        labelCheckIn={labelCheckIn}
+                        labelCheckOut={labelCheckOut}
+                      />
                     </div>
                   )
                 ]}
@@ -259,17 +168,15 @@ class Dropdown extends React.Component {
                   type="button"
                 />
                 {this.state.isOpen && (
-                  <Main>
-                    <Dates
-                      startDate={this.state.startDate}
-                      endDate={this.state.endDate}
-                      onChange={this.onChange}
-                      cancelDates={this.cancelDates}
-                      openModal={this.openModal}
-                      isApply={this.state.isApply}
-                      applyDates={this.applyDates}
-                    />
-                  </Main>
+                  <Dates
+                    startDate={this.state.startDate}
+                    endDate={this.state.endDate}
+                    onChange={this.onChange}
+                    cancelDates={this.cancelDates}
+                    openModal={this.openModal}
+                    isApply={this.state.isApply}
+                    applyDates={this.applyDates}
+                  />
                 )}
                 {this.state.isOpen ? (
                   <Overlay onClick={this.handleClickOutside} />
@@ -285,4 +192,4 @@ class Dropdown extends React.Component {
   }
 }
 
-export default onClickOutside(Dropdown);
+//export default onClickOutside(Dropdown);
