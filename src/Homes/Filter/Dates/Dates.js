@@ -4,8 +4,8 @@ import DayPicker, { DateUtils } from "react-day-picker";
 import "react-day-picker/lib/style.css";
 import "./dayPicker.css";
 import close from "./close1.svg";
-import arrow from "./arrow-calendar.svg";
-import MediaQuery from "react-responsive";
+import arrow from "../../arrow-calendar.svg";
+import moment from "moment";
 
 const Main = styled.div`
   position: fixed;
@@ -128,7 +128,7 @@ const Reset = styled.button`
   color: #0f7276;
 `;
 
-const CheckIn = styled.input`
+const CheckIn = styled.button`
   font-family: "CircularLight", sans-serif;
   padding: 0 0 6px 0;
   font-size: 1.125rem;
@@ -163,8 +163,24 @@ const HeaderModal = styled.div`
   }
 `;
 
+const labelCheckIn = startDate => {
+  if (startDate) {
+    return `${moment(startDate).format("MMM D")}`;
+  } else {
+    return "Check-in";
+  }
+};
+
+const labelCheckOut = endDate => {
+  if (endDate) {
+    return `${moment(endDate).format("MMM D")}`;
+  } else {
+    return "Check-out";
+  }
+};
+
 const monthsNumber = () => {
-  if (window.matchMedia("(min-width: 992px)").matches) return 2;
+  if (window.matchMedia("(min-width: 768px)").matches) return 2;
   if (window.matchMedia("(min-width: 575px)").matches) return 1;
   return 12;
 };
@@ -211,21 +227,9 @@ export default class Dates extends React.Component {
             <Reset onClick={this.handleResetClick}>Reset</Reset>
           </Wrapper>
 
-          <CheckIn
-            type="button"
-            value="CheckIn"
-            //когда подставляю функцию ниже, на десктопах и планшетах при нажатии на кнопку
-            //Dates говорит "this.props.labelCheckIn is not a function"
-            //Почему так? Я же в функции делаю проверку
-
-            //value={this.props.labelCheckIn(this.state.from)}
-          />
+          <CheckIn>{labelCheckIn(this.state.from)}</CheckIn>
           <img src={arrow} alt="arrow" />
-          <CheckIn
-            type="button"
-            value="CheckOut"
-            //value={this.props.labelCheckOut(this.state.to)}
-          />
+          <CheckIn>{labelCheckOut(this.state.to)}</CheckIn>
 
           <WeekdayContainer>
             <WeekDay>Su</WeekDay>
@@ -255,7 +259,7 @@ export default class Dates extends React.Component {
           </Footer>
         </Main>
         <FooterMobile>
-          <SaveBtn onClick={this.props.closePortal}>Save</SaveBtn>
+          <SaveBtn onClick={this.props.applyDates}>Save</SaveBtn>
         </FooterMobile>
       </div>
     );

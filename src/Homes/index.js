@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { Grid, Row, Col } from "react-flexbox-grid";
-import Filter from "./Filter";
+import Filter from "./Filter/Filter";
 import GoogleMap from "./GoogleMap";
 import Card from "./Card";
 import Pagination from "./Pagination";
@@ -31,7 +31,7 @@ const MapContainer = styled.div`
     position: fixed;
     top: 140px;
     right: 0;
-    z-index: -10;
+    z-index: 0;
     height: calc(100% - 8.9rem);
     display: inline-block;
   }

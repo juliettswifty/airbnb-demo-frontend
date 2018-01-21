@@ -13,7 +13,7 @@ const Header = styled.header`
   top: 0;
   left: 0;
   width: 100%;
-  z-index: 3;
+  z-index: 0;
   background: #fff;
   box-shadow: 0px 0.5px 0px rgba(72, 72, 72, 0.3);
 `;
@@ -40,7 +40,7 @@ export default () => {
           <Col xs={10} sm={7} md={5}>
             <SearchForm />
           </Col>
-          <Col sm={0} md={4} mdOffset={2} lg={4} lgOffset={2}>
+          <Col md={4} mdOffset={2} lg={4} lgOffset={2}>
             <Nav />
           </Col>
         </Row>
