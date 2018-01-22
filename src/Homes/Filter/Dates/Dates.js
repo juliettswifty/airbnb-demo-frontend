@@ -163,7 +163,7 @@ const HeaderModal = styled.div`
   }
 `;
 
-const labelCheckIn = startDate => {
+const getLabelCheckIn = startDate => {
   if (startDate) {
     return `${moment(startDate).format("MMM D")}`;
   } else {
@@ -171,7 +171,7 @@ const labelCheckIn = startDate => {
   }
 };
 
-const labelCheckOut = endDate => {
+const getLabelCheckOut = endDate => {
   if (endDate) {
     return `${moment(endDate).format("MMM D")}`;
   } else {
@@ -227,9 +227,9 @@ export default class Dates extends React.Component {
             <Reset onClick={this.handleResetClick}>Reset</Reset>
           </Wrapper>
 
-          <CheckIn>{labelCheckIn(this.state.from)}</CheckIn>
+          <CheckIn>{getLabelCheckIn(this.state.from)}</CheckIn>
           <img src={arrow} alt="arrow" />
-          <CheckIn>{labelCheckOut(this.state.to)}</CheckIn>
+          <CheckIn>{getLabelCheckOut(this.state.to)}</CheckIn>
 
           <WeekdayContainer>
             <WeekDay>Su</WeekDay>

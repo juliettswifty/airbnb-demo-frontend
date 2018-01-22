@@ -41,7 +41,7 @@ const Overlay = styled.div`
   }
 `;
 
-const formateDateLabel = (startDate, endDate) => {
+const formatDateLabel = (startDate, endDate) => {
   if ((startDate, endDate)) {
     if (moment(startDate).format("MMM") === moment(endDate).format("MMM")) {
       return `${moment(startDate).format("MMM D")} - ${moment(endDate).format(
@@ -80,7 +80,7 @@ export default class Dropdown extends React.Component {
   };
 
   applyDates = () => {
-    this.setState(prevState => ({ isApply: true }));
+    this.setState({ isApply: true });
     this.openModal();
   };
 
@@ -89,18 +89,18 @@ export default class Dropdown extends React.Component {
   };
 
   onChange = (startDate, endDate) => {
-    this.setState(prevState => ({ startDate, endDate }));
+    this.setState({ startDate, endDate });
   };
 
   cancelDates = (startDate, endDate) => {
-    this.setState(prevState => ({ startDate: undefined, endDate: undefined }));
+    this.setState({ startDate: undefined, endDate: undefined });
   };
 
   render() {
     return (
       <BtnContainer>
         <BtnModal onClick={this.openModal}>
-          {formateDateLabel(this.state.startDate, this.state.endDate)}
+          {formatDateLabel(this.state.startDate, this.state.endDate)}
         </BtnModal>
         {this.state.isOpen && (
           <Dates
@@ -115,9 +115,7 @@ export default class Dropdown extends React.Component {
         )}
         {this.state.isOpen ? (
           <Overlay onClick={this.handleClickOutside} />
-        ) : (
-          false
-        )}
+        ) : null}
       </BtnContainer>
     );
   }
