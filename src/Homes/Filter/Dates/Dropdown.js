@@ -42,13 +42,14 @@ const Overlay = styled.div`
 `;
 
 const formatDateLabel = (startDate, endDate) => {
+  const start = startDate;
+  const end = endDate;
+
   if ((startDate, endDate)) {
-    if (moment(startDate).format("MMM") === moment(endDate).format("MMM")) {
-      return `${moment(startDate).format("MMM D")} - ${moment(endDate).format(
-        "D"
-      )}`;
+    if (moment(start).format("MMM") === moment(end).format("MMM")) {
+      return `${moment(start).format("MMM D")} - ${moment(end).format("D")}`;
     } else {
-      return `${moment(startDate).format("MMM D")} - ${moment(endDate).format(
+      return `${moment(start).format("MMM D")} - ${moment(end).format(
         "MMM D"
       )}`;
     }
