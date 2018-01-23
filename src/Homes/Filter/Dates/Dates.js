@@ -258,14 +258,14 @@ export default class Dates extends React.Component {
   handleClickOutside = () => {
     this.props.openModal();
 
-    this.cancelDates(this.state.from, this.state.to);
+    this.resetDates(this.state.from, this.state.to);
   };
 
   onChange = (from, to) => {
     this.setState({ from, to });
   };
 
-  cancelDates = (from, to) => {
+  resetDates = (from, to) => {
     this.setState({ from: null, to: null });
   };
 
@@ -287,9 +287,9 @@ export default class Dates extends React.Component {
           <div>
             <HeaderModal>
               <Wrapper>
-                <Close onClick={this.props.openModal} />
+                <Close onClick={this.handleClickOutside} />
                 <Text>Dates</Text>
-                <Reset onClick={this.resetClick}>Reset</Reset>
+                <Reset onClick={this.resetDates}>Reset</Reset>
               </Wrapper>
 
               <CheckIn>{getLabelCheckIn(this.state.from)}</CheckIn>
@@ -320,7 +320,7 @@ export default class Dates extends React.Component {
               />
 
               <Footer>
-                <BtnCancel onClick={this.cancelDates}>Cancel</BtnCancel>
+                <BtnCancel onClick={this.handleClickOutside}>Cancel</BtnCancel>
                 <BtnApply onClick={this.saveDates}>Apply</BtnApply>
               </Footer>
             </Main>
