@@ -20,15 +20,9 @@ const BtnModal = styled.button`
   padding: 7px 16px;
   font-size: 0.875rem;
   margin: 12px 11px 12px 0;
-  &:hover {
-    background: #f2f2f2;
-    border-color: #f2f2f2;
-  }
-  &:focus {
-    background: #008489;
-    color: #ffffff;
-    border-color: #008489;
-  }
+
+  color: ${props => (props.isOpen ? "#fff" : "#383838")};
+  background: ${props => (props.isOpen ? "#008489" : "transparent")};
 `;
 
 const Overlay = styled.div`
