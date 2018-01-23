@@ -7,6 +7,44 @@ import close from "./close1.svg";
 import arrow from "../../arrow-calendar.svg";
 import moment from "moment";
 
+const BtnContainer = styled.div`
+  display: inline-block;
+  position: relative;
+`;
+
+const BtnModal = styled.button`
+  display: inline-block;
+  border: 1px solid rgba(72, 72, 72, 0.2);
+  box-sizing: border-box;
+  border-radius: 4px;
+  padding: 7px 16px;
+  font-size: 0.875rem;
+  margin: 12px 11px 12px 0;
+  &:hover {
+    background: #f2f2f2;
+    border-color: #f2f2f2;
+  }
+  &:focus {
+    background: #008489;
+    color: #ffffff;
+    border-color: #008489;
+  }
+`;
+
+const Overlay = styled.div`
+  display: none;
+  @media (min-width: 575px) {
+    display: block;
+    position: fixed;
+    top: 140px;
+    width: 100%;
+    height: 100vh;
+    background: #ffffff;
+    opacity: 0.8;
+    z-index: 0;
+  }
+`;
+
 const Main = styled.div`
   position: fixed;
   overflow: auto;
@@ -179,6 +217,22 @@ const getLabelCheckOut = endDate => {
   }
 };
 
+const formatDateLabel = (startDate, endDate) => {
+  const formattedStart = moment(startDate).format("MMM D");
+  const formattedEnd = moment(endDate).format("MMM D");
+  const formattedDayEnd = moment(endDate).format("D");
+
+  if ((startDate, endDate)) {
+    if (startDate.getMonth() === endDate.getMonth()) {
+      return `${formattedStart} - ${formattedDayEnd}`;
+    } else {
+      return `${formattedStart} - ${formattedEnd}`;
+    }
+  } else {
+    return "Dates";
+  }
+};
+
 const monthsNumber = () => {
   if (window.matchMedia("(min-width: 768px)").matches) return 2;
   if (window.matchMedia("(min-width: 575px)").matches) return 1;
@@ -187,11 +241,8 @@ const monthsNumber = () => {
 
 export default class Dates extends React.Component {
   state = {
-    startDate: this.props.startDate,
-    endDate: this.props.endDate,
-    isApply: this.props.isApply,
-    from: undefined,
-    to: undefined
+    from: null,
+    to: null
   };
 
   handleDayClick = (day, { disabled, selected }) => {
@@ -201,67 +252,86 @@ export default class Dates extends React.Component {
     this.setState(prevState => {
       return range;
     });
-
-    this.props.onChange(range.from, range.to);
+    this.onChange(range.from, range.to);
   };
 
-  handleResetClick = () => {
-    this.props.onChange(this.state.startDate, this.state.fromDate);
-    this.setState(prevState => {
-      return {
-        from: undefined,
-        to: undefined
-      };
-    });
+  handleClickOutside = () => {
+    this.props.openModal();
+
+    this.cancelDates(this.state.from, this.state.to);
+  };
+
+  onChange = (from, to) => {
+    this.setState({ from, to });
+  };
+
+  cancelDates = (from, to) => {
+    this.setState({ from: null, to: null });
+  };
+
+  saveDates = () => {
+    this.props.saveDates(this.state.from, this.state.to);
+
+    this.props.openModal();
   };
 
   render() {
     const { from, to } = this.state;
     const modifiers = { start: from, end: to };
     return (
-      <div>
-        <HeaderModal>
-          <Wrapper>
-            <Close onClick={this.props.closePortal} />
-            <Text>Dates</Text>
-            <Reset onClick={this.handleResetClick}>Reset</Reset>
-          </Wrapper>
+      <BtnContainer>
+        <BtnModal isOpen={this.props.isOpen} onClick={this.props.openModal}>
+          {formatDateLabel(this.state.from, this.state.to)}
+        </BtnModal>
+        {this.props.isOpen && (
+          <div>
+            <HeaderModal>
+              <Wrapper>
+                <Close onClick={this.props.openModal} />
+                <Text>Dates</Text>
+                <Reset onClick={this.resetClick}>Reset</Reset>
+              </Wrapper>
 
-          <CheckIn>{getLabelCheckIn(this.state.from)}</CheckIn>
-          <img src={arrow} alt="arrow" />
-          <CheckIn>{getLabelCheckOut(this.state.to)}</CheckIn>
+              <CheckIn>{getLabelCheckIn(this.state.from)}</CheckIn>
+              <img src={arrow} alt="arrow" />
+              <CheckIn>{getLabelCheckOut(this.state.to)}</CheckIn>
 
-          <WeekdayContainer>
-            <WeekDay>Su</WeekDay>
-            <WeekDay>Mo</WeekDay>
-            <WeekDay>Tu</WeekDay>
-            <WeekDay>We</WeekDay>
-            <WeekDay>Th</WeekDay>
-            <WeekDay>Fr</WeekDay>
-            <WeekDay>Sa</WeekDay>
-          </WeekdayContainer>
-        </HeaderModal>
-        <Main>
-          <DayPicker
-            className="Selectable"
-            numberOfMonths={monthsNumber()}
-            selectedDays={[from, { from, to }]}
-            modifiers={modifiers}
-            onDayClick={this.handleDayClick}
-            showWeekDays={false}
-            isOutsideRange={true}
-            disabledDays={{ before: new Date() }}
-          />
+              <WeekdayContainer>
+                <WeekDay>Su</WeekDay>
+                <WeekDay>Mo</WeekDay>
+                <WeekDay>Tu</WeekDay>
+                <WeekDay>We</WeekDay>
+                <WeekDay>Th</WeekDay>
+                <WeekDay>Fr</WeekDay>
+                <WeekDay>Sa</WeekDay>
+              </WeekdayContainer>
+            </HeaderModal>
 
-          <Footer>
-            <BtnCancel onClick={this.handleResetClick}>Cancel</BtnCancel>
-            <BtnApply onClick={this.props.applyDates}>Apply</BtnApply>
-          </Footer>
-        </Main>
-        <FooterMobile>
-          <SaveBtn onClick={this.props.applyDates}>Save</SaveBtn>
-        </FooterMobile>
-      </div>
+            <Main>
+              <DayPicker
+                className="Selectable"
+                numberOfMonths={monthsNumber()}
+                selectedDays={[from, { from, to }]}
+                modifiers={modifiers}
+                onDayClick={this.handleDayClick}
+                showWeekDays={false}
+                isOutsideRange={true}
+                disabledDays={{ before: new Date() }}
+              />
+
+              <Footer>
+                <BtnCancel onClick={this.cancelDates}>Cancel</BtnCancel>
+                <BtnApply onClick={this.saveDates}>Apply</BtnApply>
+              </Footer>
+            </Main>
+
+            <FooterMobile>
+              <SaveBtn onClick={this.saveDates}>Save</SaveBtn>
+            </FooterMobile>
+          </div>
+        )}
+        {this.props.isOpen && <Overlay onClick={this.handleClickOutside} />}
+      </BtnContainer>
     );
   }
 }

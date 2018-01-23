@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { Grid, Row, Col } from "react-flexbox-grid";
-import Dropdown from "./Dates/Dropdown";
+import Dates from "./Dates/Dates";
 
 const Button = styled.button`
   display: inline-block;
@@ -48,23 +48,46 @@ const Filter = styled.div`
   box-shadow: 0px 0.5px 0px rgba(72, 72, 72, 0.3);
 `;
 
-export default () => {
-  return (
-    <div>
-      <Filter>
-        <Grid>
-          <Row start="xs">
-            <Col xs={12} lg={8}>
-              <Dropdown />
-              <Button>Guests</Button>
-              <HiddenBtn>Room type</HiddenBtn>
-              <HiddenBtn>Price</HiddenBtn>
-              <HiddenBtn>Instant book</HiddenBtn>
-              <Button>More filters</Button>
-            </Col>
-          </Row>
-        </Grid>
-      </Filter>
-    </div>
-  );
-};
+export default class Filters extends React.Component {
+  state = {
+    isOpen: false,
+    startDate: null,
+    endDate: null
+  };
+
+  openModal = () => {
+    this.setState(prevState => ({ isOpen: !prevState.isOpen }));
+  };
+
+  saveDates = (startDate, endDate) => {
+    this.setState({
+      startDate: startDate,
+      endDate: endDate
+    });
+  };
+
+  render() {
+    return (
+      <div>
+        <Filter>
+          <Grid>
+            <Row start="xs">
+              <Col xs={12} lg={8}>
+                <Dates
+                  saveDates={this.saveDates}
+                  openModal={this.openModal}
+                  isOpen={this.state.isOpen}
+                />
+                <Button>Guests</Button>
+                <HiddenBtn>Room type</HiddenBtn>
+                <HiddenBtn>Price</HiddenBtn>
+                <HiddenBtn>Instant book</HiddenBtn>
+                <Button>More filters</Button>
+              </Col>
+            </Row>
+          </Grid>
+        </Filter>
+      </div>
+    );
+  }
+}
