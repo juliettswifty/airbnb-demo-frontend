@@ -61,7 +61,7 @@ const IconLocation = styled.button`
 
 export default class Homes extends React.Component {
   state = {
-    items: [],
+    cards: [],
   };
 
   componentWillMount() {
@@ -74,20 +74,7 @@ export default class Homes extends React.Component {
     })
       .then(res => res.json(), err => err.message)
       .then((data) => {
-        const arr = Object.keys(data.items).map(key => (
-          <Col xs={12} sm={6}>
-            <Card
-              picSrc={data.items[key].images[0].picture}
-              price={data.items[key].price}
-              title={data.items[key].name}
-              rentType={data.items[key].kind}
-              bedsCount={data.items[key].bedsCount}
-              reviewsCount={data.items[key].reviewsCount}
-              houseGrade={data.items[key].isSuperhost && 'Superhost'}
-            />
-          </Col>
-        ));
-        this.setState({ items: arr });
+        this.setState({ cards: data.items });
       });
   };
 
@@ -103,7 +90,21 @@ export default class Homes extends React.Component {
           <Row>
             <Col xs={12} lg={8}>
               <Container>
-                <Row>{this.state.items}</Row>
+                <Row>
+                  {this.state.cards.map(key => (
+                    <Col xs={12} sm={6}>
+                      <Card
+                        picSrc={key.images[0].picture}
+                        price={key.price}
+                        title={key.name}
+                        rentType={key.kind}
+                        bedsCount={key.bedsCount}
+                        reviewsCount={key.reviewsCount}
+                        houseGrade={key.isSuperhost && 'Superhost'}
+                      />
+                    </Col>
+                  ))}
+                </Row>
                 <Row>
                   <Col xs={12}>
                     <Pagination />
