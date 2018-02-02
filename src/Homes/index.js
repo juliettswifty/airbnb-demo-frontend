@@ -78,6 +78,14 @@ export default class Homes extends React.Component {
       });
   };
 
+  formatTypeRoom = (type) => {
+    if (type === 'entire_home') return 'Entire home';
+    if (type === 'private_room') return 'Private room';
+    return 'Shared room';
+  };
+
+  formatBedsCount = quantity => (quantity > 1 ? `${quantity} beds` : `${quantity} bed`);
+
   render() {
     return (
       <div>
@@ -97,10 +105,10 @@ export default class Homes extends React.Component {
                         picSrc={key.images[0].picture}
                         price={key.price}
                         title={key.name}
-                        rentType={key.kind}
-                        bedsCount={key.bedsCount}
+                        rentType={this.formatTypeRoom(key.kind)}
+                        bedsCount={this.formatBedsCount(key.bedsCount)}
                         reviewsCount={key.reviewsCount}
-                        houseGrade={key.isSuperhost && 'Superhost'}
+                        houseGrade={key.isSuperhost && '· Superhost'}
                       />
                     </Col>
                   ))}

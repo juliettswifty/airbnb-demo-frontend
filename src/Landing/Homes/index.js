@@ -7,12 +7,6 @@ import Card from '../../Homes/Card';
 import BtnNext from '../BtnNext';
 import HorizontalScroll from '../HorizontalScroll';
 import Title from '../Title';
-import image from '../../Homes/Rectangle.png';
-import image2x from '../../Homes/Rectangle@2x.png';
-import image2 from '../../Homes/Rectangle2.png';
-import image22x from '../../Homes/Rectangle2@2x.png';
-import image3 from '../../Homes/Rectangle3.png';
-import image32x from '../../Homes/Rectangle3@2x.png';
 
 const Container = styled.div`
   position: relative;
@@ -36,62 +30,69 @@ const Arrow = styled.img`
   margin-bottom: 2px;
 `;
 
-export default () => (
-  <div>
-    <Grid>
-      <Row end="xs" middle="xs">
-        <Col xs>
-          <Title>Homes</Title>
-        </Col>
-        <Col xs>
-          <BtnAll to="/homes">
-            See all <Arrow src={arrow} alt="Arrow" />
-          </BtnAll>
-        </Col>
-      </Row>
-      <Container>
-        <Row>
-          <HorizontalScroll>
-            <Col xs={6} sm={5} md={4}>
-              <UpdatedCard
-                picSrc={image}
-                picSrc2x={image2x}
-                price="82"
-                title="La Salentina, see, nature & relax"
-                rentType="Entire house"
-                bedsCount="9"
-                reviewsCount="97"
-                houseGrade="Superhost"
-              />
+export default class Homes extends React.Component {
+  state = {
+    cards: [],
+  };
+
+  componentWillMount() {
+    this.fetchItems();
+  }
+
+  fetchItems = () => {
+    fetch('https://airbnb-demo-api.now.sh/v1/homes', {
+      method: 'GET',
+    })
+      .then(res => res.json(), err => err.message)
+      .then((data) => {
+        this.setState({ cards: data.items });
+      });
+  };
+
+  formatTypeRoom = (type) => {
+    if (type === 'entire_home') return 'Entire home';
+    if (type === 'private_room') return 'Private room';
+    return 'Shared room';
+  };
+
+  formatBedsCount = quantity => (quantity > 1 ? `${quantity} beds` : `${quantity} bed`);
+
+  render() {
+    return (
+      <div>
+        <Grid>
+          <Row end="xs" middle="xs">
+            <Col xs>
+              <Title>Homes</Title>
             </Col>
-            <Col xs={6} sm={5} md={4}>
-              <UpdatedCard
-                picSrc={image2}
-                picSrc2x={image22x}
-                price="82"
-                title="Your private 3 bedr. riad and exclusi…"
-                rentType="Entire house"
-                bedsCount="5"
-                reviewsCount="161"
-                houseGrade="Superhost"
-              />
+            <Col xs>
+              <BtnAll to="/homes">
+                See all <Arrow src={arrow} alt="Arrow" />
+              </BtnAll>
             </Col>
-            <Col xs={6} sm={5} md={4}>
-              <UpdatedCard
-                picSrc={image3}
-                picSrc2x={image32x}
-                price="200"
-                title="Dreamy Tropical Tree House"
-                rentType="Entire house"
-                bedsCount="1"
-                reviewsCount="364"
-                houseGrade="Superhost"
-              />
-            </Col>
-            <BtnNext />
-          </HorizontalScroll>
-        </Row>
-      </Container>
-    </Grid>
-  </div>
-);
+          </Row>
+          <Container>
+            <Row>
+              <HorizontalScroll>
+                {this.state.cards.map(key => (
+                  <Col xs={6} sm={5} md={4}>
+                    <UpdatedCard
+                      picSrc={key.images[0].picture}
+                      price={key.price}
+                      title={key.name}
+                      rentType={this.formatTypeRoom(key.kind)}
+                      bedsCount={this.formatBedsCount(key.bedsCount)}
+                      reviewsCount={key.reviewsCount}
+                      houseGrade={key.isSuperhost && '· Superhost'}
+                    />
+                  </Col>
+                ))}
+                <BtnNext />
+              </HorizontalScroll>
+            </Row>
+          </Container>
+        </Grid>
+      </div>
+    );
+  }
+}

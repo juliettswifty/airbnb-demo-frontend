@@ -65,7 +65,7 @@ export default props => (
       <Col xs>
         <TextContainer>
           <Options>
-            {props.rentType} · {props.bedsCount} beds
+            {props.rentType} · {props.bedsCount}
           </Options>
         </TextContainer>
       </Col>
@@ -79,7 +79,7 @@ export default props => (
           <Star src={star} alt="star" />
           <Star src={star} alt="star" />
           <Owners>
-            {props.reviewsCount} · {props.houseGrade}
+            {props.reviewsCount} {props.houseGrade}
           </Owners>
         </TextContainer>
       </Col>
