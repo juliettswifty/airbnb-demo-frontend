@@ -61,30 +61,20 @@ const IconLocation = styled.button`
 
 export default class Homes extends React.Component {
   state = {
-    cards: [],
+    homes: [],
   };
 
   componentWillMount() {
-    this.fetchItems();
+    this.fetchData();
   }
 
-  fetchItems = () => {
-    fetch('https://airbnb-demo-api.now.sh/v1/homes', {
-      method: 'GET',
-    })
+  fetchData = () => {
+    fetch('https://airbnb-demo-api.now.sh/v1/homes')
       .then(res => res.json(), err => err.message)
       .then((data) => {
-        this.setState({ cards: data.items });
+        this.setState({ homes: data.items });
       });
   };
-
-  formatTypeRoom = (type) => {
-    if (type === 'entire_home') return 'Entire home';
-    if (type === 'private_room') return 'Private room';
-    return 'Shared room';
-  };
-
-  formatBedsCount = quantity => (quantity > 1 ? `${quantity} beds` : `${quantity} bed`);
 
   render() {
     return (
@@ -99,16 +89,16 @@ export default class Homes extends React.Component {
             <Col xs={12} lg={8}>
               <Container>
                 <Row>
-                  {this.state.cards.map(key => (
+                  {this.state.homes.map(home => (
                     <Col xs={12} sm={6}>
                       <Card
-                        picSrc={key.images[0].picture}
-                        price={key.price}
-                        title={key.name}
-                        rentType={this.formatTypeRoom(key.kind)}
-                        bedsCount={this.formatBedsCount(key.bedsCount)}
-                        reviewsCount={key.reviewsCount}
-                        houseGrade={key.isSuperhost && '· Superhost'}
+                        picSrc={home.images[0].picture}
+                        price={home.price}
+                        title={home.name}
+                        rentType={home.kind}
+                        bedsCount={home.bedsCount}
+                        reviewsCount={home.reviewsCount}
+                        houseGrade={home.isSuperhost && '· Superhost'}
                       />
                     </Col>
                   ))}
